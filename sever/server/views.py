@@ -1522,3 +1522,39 @@ def TheatrebyMovies(request, theatre_id):
         "status": True,
         "data": data
     })
+
+
+
+@csrf_exempt
+def Search(request, key):
+
+    movies = tbl_movie.objects.filter(movie_title__icontains=key)
+    theatres = tbl_theater.objects.filter(theater_name__icontains=key)
+    cities = tbl_city.objects.filter(city_name__icontains=key)
+
+    data = []
+
+    for m in movies:
+       data.append({
+             "type": "Movie",
+             "name": m.movie_title,
+             "link": f"/user/movie/{m.id}"
+          })
+    for t in theatres:
+        data.append({
+            "type": "Theatre",
+            "name": t.theater_name,
+            "link": f"/theatre/movies/{t.id}"
+        })
+
+    for c in cities:
+        data.append({
+            "type": "City",
+            "name": c.city_name,
+            "link": f"/city/{c.id}"
+        })
+
+    return JsonResponse({
+        "status": True,
+        "data": data
+    })

@@ -272,3 +272,26 @@
   object-fit: cover;
   border: 2px solid var(--primary-color);
 }
+
+.searchResults{
+    position:absolute;
+    top:45px;
+    width:260px;
+    background:white;
+    border-radius:6px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    overflow:hidden;
+    z-index:100;
+}
+
+.resultItem{
+    display:block;
+    padding:10px;
+    text-decoration:none;
+    color:#333;
+    border-bottom:1px solid #eee;
+}
+
+.resultItem:hover{
+    background:#f5f5f5;
+}

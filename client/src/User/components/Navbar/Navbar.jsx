@@ -4,6 +4,7 @@ import logo from "../../../assets/Logo/logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import profile from "../../../assets/Profile/profile.jpg";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Navbar = () => {
     const username = sessionStorage.getItem("user_name");
@@ -12,6 +13,28 @@ const Navbar = () => {
     const searchRef = useRef(null);
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const profileRef = useRef(null);
+    const [search, setSearch] = useState("");
+    const [results, setResults] = useState([]);
+
+    useEffect(() => {
+
+        if (search.length < 2) {
+            setResults([]);
+            return;
+        }
+
+        axios
+            .get(`http://127.0.0.1:8000/search/${search}/`)
+            .then((res) => {
+                if (res.data.status) {
+                    setResults(res.data.data);
+                }
+            })
+            .catch((err) => console.log(err));
+
+    }, [search]);
+
+
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -57,11 +80,31 @@ const Navbar = () => {
 
                     <input
                         type="text"
-                        placeholder="Search"
-                        className={`${styles.searchInput} ${showSearch ? styles.active : ""
-                            }`}
+                        placeholder="Search movies, theatres, cities..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className={`${styles.searchInput} ${showSearch ? styles.active : ""}`}
                     />
                 </div>
+
+                {results.length > 0 && (
+                    <div className={styles.searchResults}>
+
+                        {results.map((item, index) => (
+
+                            <Link
+                                key={index}
+                                to={item.link}
+                                className={styles.resultItem}
+                            >
+                                {item.type} : {item.name}
+                            </Link>
+
+                        ))}
+
+                    </div>
+                )}
+
 
             </div>
             <div className={styles.item} ref={profileRef}>
