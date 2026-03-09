@@ -162,6 +162,7 @@
   font-size: 15px;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
+  text-decoration: none;
   
 }
 
@@ -173,6 +174,7 @@
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 
 .logo span {

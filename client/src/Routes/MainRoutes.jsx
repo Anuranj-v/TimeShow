@@ -6,16 +6,16 @@ import GuestLayout from '../Guest/GuestLayout/GuestLayout'
 import TheatreLayout from '../Theatre/TheatreLayout/TheatreLayout'
 import Payment from '../User/pages/Payment/Payment'
 import TicketView from '../User/pages/TicketView/TicketView'
-
+import UserDashboard from '../Guest/pages/GuestDashboard/UserDashboard'
 const MainRoutes = () => {
     return (
         <Routes>
-            <Route path='/*' element={<GuestLayout />} />
+            <Route path='/*' element={<UserDashboard />} />
             <Route path='admin/*' element={<AdminLayout />} />
             <Route path='User/*' element={<UserLayout />} />
             <Route path='guest/*' element={<GuestLayout />} />
             <Route path='theatre/*' element={<TheatreLayout />} />
-             <Route path="payment/:bookingId" element={<Payment />} />
+            <Route path="payment/:bookingId" element={<Payment />} />
             <Route path="ticket/:bookingId" element={<TicketView />} />
         </Routes>
     )

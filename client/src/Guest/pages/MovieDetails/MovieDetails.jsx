@@ -198,9 +198,9 @@ const MovieDetails = () => {
                     Rate
                 </a>
 
-            </div >
+            </div>
             {/* ---------- CITY SEARCH ---------- */}
-            <div div className={styles.Search} >
+            <div className={styles.Search}>
 
                 <input
                     type="text"
@@ -214,75 +214,71 @@ const MovieDetails = () => {
 
                 <SearchIcon className={styles.icon} />
 
-                {
-                    showDrop && citySuggestions.length > 0 && (
+                {showDrop && citySuggestions.length > 0 && (
 
-                        <div className={styles.cityDropdown}>
+                    <div className={styles.cityDropdown}>
 
-                            {citySuggestions.map((city) => (
+                        {citySuggestions.map((city) => (
 
-                                <div
-                                    key={city.id}
-                                    className={styles.cityItem}
-                                    onClick={() => selectCity(city)}
-                                >
-                                    {city.city_name}
-                                </div>
+                            <div
+                                key={city.id}
+                                className={styles.cityItem}
+                                onClick={() => selectCity(city)}
+                            >
+                                {city.city_name}
+                            </div>
 
-                            ))}
+                        ))}
 
-                        </div>
+                    </div>
 
-                    )
-                }
+                )}
 
-            </div >
+            </div>
 
             {/* ---------- THEATRES ---------- */}
-            < div className={styles.theatreSection} >
+            <div className={styles.theatreSection}>
 
                 <div className={styles.reviewHeaderTop}>
                     <h2>🎭 AVAILABLE THEATRES</h2>
                 </div>
 
-                {
-                    filteredTheatres.length === 0 ? (
+                {filteredTheatres.length === 0 ? (
 
-                        <p style={{ color: "gray" }}>
-                            No theatres found
-                        </p>
+                    <p style={{ color: "gray" }}>
+                        No theatres found
+                    </p>
 
-                    ) : (
+                ) : (
 
-                        filteredTheatres.map((theatre, i) => (
+                    filteredTheatres.map((theatre, i) => (
 
-                            <Link
-                                key={i}
-                                to={`/User/DateTime/${theatre.theater_id}/${theatre.movieId}`}
-                                className={styles.theatreCard}
-                            >
+                        <Link
+                            key={i}
+                            to={`/Guest/DateTime/${theatre.theater_id}/${theatre.movieId}`}
+                            className={styles.theatreCard}
+                        >
 
-                                <div className={styles.theatreInfo}>
+                            <div className={styles.theatreInfo}>
 
-                                    <h3>{theatre.theater_name}</h3>
+                                <h3>{theatre.theater_name}</h3>
 
-                                    <span className={styles.cancel}>
-                                        Allows Cancellation
-                                    </span>
+                                <span className={styles.cancel}>
+                                    Allows Cancellation
+                                </span>
 
-                                </div>
+                            </div>
 
-                            </Link>
+                        </Link>
 
-                        ))
+                    ))
 
-                    )
-                }
+                )}
 
-            </div >
+            </div>
 
             {/* ---------- REVIEWS ---------- */}
-            < div id="reviews" className={styles.reviewSection} >
+            <div id="reviews" className={styles.reviewSection}>
 
                 <div className={styles.reviewHeaderTop}>
                     <h3>Top Reviews</h3>

@@ -16,7 +16,7 @@ const NAV_ITEMS = [
     { to: "/admin/AdminDashboard", icon: <DashboardIcon />, label: "Dashboard" },
     { to: "/admin/district", icon: <SlowMotionVideoIcon />, label: "District" },
     // { to: "/admin/Genres", icon: <AddReactionIcon />, label: "Genres" },
-    { to: "/admin/MovieGenres", icon: <MovieIcon />, label: "Movie Genre" },
+    // { to: "/admin/MovieGenres", icon: <MovieIcon />, label: "Movie Genre" },
     { to: "/admin/City", icon: <PlaceIcon />, label: "City" },
     { to: "/admin/Movies", icon: <MovieIcon />, label: "Movies" },
     { to: "/admin/ScreenType", icon: <WeekendIcon />, label: "Screen Type" },

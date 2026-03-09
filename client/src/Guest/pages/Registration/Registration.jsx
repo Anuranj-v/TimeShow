@@ -1,9 +1,11 @@
 import styles from "./Registration.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
 const Registration = () => {
+
+  const navigate = useNavigate();
 
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -20,9 +22,16 @@ const Registration = () => {
 
   const [loading, setLoading] = useState(false);
   const [errorAnim, setErrorAnim] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const nameRegex = /^[A-Za-z ]{3,30}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[6-9]\d{9}$/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@#$!%*?&]{6,}$/;
 
   // Close dropdown when clicking outside
   useEffect(() => {
+
     const handleClickOutside = (e) => {
       if (cityBoxRef.current && !cityBoxRef.current.contains(e.target)) {
         setShowCityDrop(false);
@@ -30,10 +39,12 @@ const Registration = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => document.removeEventListener("mousedown", handleClickOutside);
+
   }, []);
 
-  // City search with debounce
+  // City search
   useEffect(() => {
 
     if (!cityText.trim()) {
@@ -64,17 +75,39 @@ const Registration = () => {
 
   }, [cityText]);
 
-  // Pick city
   const pickCity = (city) => {
     setCityText(city.city_name);
     setCity(city.id);
     setShowCityDrop(false);
   };
 
-  // Save user
   const handleSave = () => {
 
-    if (!userName || !userEmail || !userPassword || !userContact || !city_Id) {
+    let newErrors = {};
+
+    if (!nameRegex.test(userName)) {
+      newErrors.userName = "Enter valid name (letters only)";
+    }
+
+    if (!emailRegex.test(userEmail)) {
+      newErrors.userEmail = "Enter valid email";
+    }
+
+    if (!phoneRegex.test(userContact)) {
+      newErrors.userContact = "Enter valid phone number";
+    }
+
+    if (!passwordRegex.test(userPassword)) {
+      newErrors.userPassword = "Password must contain letter + number (min 6)";
+    }
+
+    if (!city_Id) {
+      newErrors.city = "Please select a city";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
       setErrorAnim(true);
       setTimeout(() => setErrorAnim(false), 400);
       return;
@@ -103,16 +136,25 @@ const Registration = () => {
         setCityText("");
         setCity("");
 
+        alert("Registration successful!");
+
+        navigate("/guest/login");
+
       })
       .catch(() => {
+
         setLoading(false);
         setErrorAnim(true);
+
         setTimeout(() => setErrorAnim(false), 400);
+
       });
   };
 
   return (
+
     <div className={styles.overlay}>
+
       <div className={`${styles.signupCard} ${errorAnim ? styles.shake : ""}`}>
 
         <button className={styles.closeBtn}>×</button>
@@ -134,6 +176,8 @@ const Registration = () => {
           onChange={(e) => setUserName(e.target.value)}
         />
 
+        {errors.userName && <p className={styles.error}>{errors.userName}</p>}
+
         {/* Email */}
         <label className={styles.label}>Email address</label>
 
@@ -145,7 +189,9 @@ const Registration = () => {
           onChange={(e) => setUserEmail(e.target.value)}
         />
 
-        {/* CITY SEARCH */}
+        {errors.userEmail && <p className={styles.error}>{errors.userEmail}</p>}
+
+        {/* City */}
         <label className={styles.label}>City</label>
 
         <div className={styles.autoWrap} ref={cityBoxRef}>
@@ -161,6 +207,8 @@ const Registration = () => {
             }}
             onFocus={() => cityList.length > 0 && setShowCityDrop(true)}
           />
+
+          {errors.city && <p className={styles.error}>{errors.city}</p>}
 
           {showCityDrop && (
 
@@ -212,14 +260,18 @@ const Registration = () => {
           <span className={styles.code}>+91</span>
 
           <input
-            type="text"
+            type="tel"
             placeholder="Enter your phone number"
             className={styles.input}
             value={userContact}
-            onChange={(e) => setUserContact(e.target.value)}
+            onChange={(e) =>
+              setUserContact(e.target.value.replace(/\D/g, ""))
+            }
           />
 
         </div>
+
+        {errors.userContact && <p className={styles.error}>{errors.userContact}</p>}
 
         {/* Password */}
         <label className={styles.label}>Password</label>
@@ -231,6 +283,8 @@ const Registration = () => {
           value={userPassword}
           onChange={(e) => setUserPassword(e.target.value)}
         />
+
+        {errors.userPassword && <p className={styles.error}>{errors.userPassword}</p>}
 
         {/* Submit */}
         <button
@@ -246,7 +300,9 @@ const Registration = () => {
         </p>
 
       </div>
+
     </div>
+
   );
 };
 
