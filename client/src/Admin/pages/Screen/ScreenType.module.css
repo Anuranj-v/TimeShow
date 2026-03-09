@@ -1,0 +1,355 @@
+/* ============================================================
+   SCREEN TYPE PAGE — Red × Black Glass Theme
+   Accent: Purple  ➜  distinguishes from other pages
+   ============================================================ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 4px 0;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.accentBar {
+  width: 4px;
+  height: 42px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #a855f7, #6b21a8);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.55);
+  flex-shrink: 0;
+}
+
+.pageTag {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(192, 132, 252, 0.5);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 4px;
+}
+
+.h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff5f5;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+.totalBadge {
+  font-size: 22px;
+  font-weight: 800;
+  color: #a855f7;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
+  text-align: right;
+  line-height: 1;
+}
+
+.totalBadge span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(192, 132, 252, 0.4);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+/* ===== FORM CARD ===== */
+.formCard {
+  background: rgba(10, 3, 18, 0.55);
+  backdrop-filter: blur(24px) saturate(1.7);
+  -webkit-backdrop-filter: blur(24px) saturate(1.7);
+  border: 1px solid rgba(168, 85, 247, 0.14);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(168, 85, 247, 0.08) inset;
+  padding: 22px 24px;
+}
+
+.formCardTop {
+  height: 2px;
+  background: linear-gradient(90deg, #a855f7, #6b21a8 55%, transparent);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.formRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ===== INPUT ===== */
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+  min-width: 220px;
+}
+
+.inputLabel {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(192, 132, 252, 0.5);
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+}
+
+.input {
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  color: #f5e8ff;
+  padding: 0 14px;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+.input::placeholder {
+  color: rgba(192, 132, 252, 0.22);
+}
+
+/* ===== BUTTONS ===== */
+.btnRow {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn {
+  height: 42px;
+  padding: 0 28px;
+  background: linear-gradient(135deg, #9333ea 0%, #6b21a8 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(147, 51, 234, 0.4);
+  transition: box-shadow 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  box-shadow: 0 6px 26px rgba(147, 51, 234, 0.6);
+  transform: translateY(-1px);
+}
+
+.btn:active { transform: translateY(0); }
+
+.btnCancel {
+  height: 42px;
+  padding: 0 22px;
+  background: transparent;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 8px;
+  color: rgba(192, 132, 252, 0.65);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+
+.btnCancel:hover {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #c084fc;
+}
+
+/* ===== CHIPS ===== */
+.chipsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.chip {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(192, 132, 252, 0.7);
+  background: rgba(168, 85, 247, 0.07);
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  padding: 4px 12px;
+  border-radius: 20px;
+  transition: all 0.18s;
+}
+
+.chip:hover {
+  background: rgba(168, 85, 247, 0.16);
+  border-color: rgba(168, 85, 247, 0.45);
+  color: #c084fc;
+}
+
+/* ===== TABLE CARD ===== */
+.tableCard {
+  background: rgba(10, 3, 18, 0.55);
+  backdrop-filter: blur(24px) saturate(1.7);
+  -webkit-backdrop-filter: blur(24px) saturate(1.7);
+  border: 1px solid rgba(168, 85, 247, 0.13);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(168, 85, 247, 0.07) inset;
+}
+
+.tableCardTop {
+  height: 2px;
+  background: linear-gradient(90deg, #a855f7, transparent);
+}
+
+/* ===== TABLE ===== */
+.tableWrapper {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 85, 247, 0.2) transparent;
+}
+
+.tableWrapper::-webkit-scrollbar { height: 4px; }
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 2px;
+}
+
+.table { width: 100%; border-collapse: collapse; }
+
+.th {
+  text-align: left;
+  padding: 14px 20px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(192, 132, 252, 0.45);
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+  background: rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+
+.row { transition: background 0.15s; }
+.row:hover { background: rgba(168, 85, 247, 0.04); }
+
+.td {
+  padding: 13px 20px;
+  font-size: 13px;
+  color: rgba(230, 200, 255, 0.65);
+  font-family: 'Courier New', monospace;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.06);
+}
+
+.row:last-child .td { border-bottom: none; }
+
+.typeTag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+  color: rgba(192, 132, 252, 0.8);
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+/* ===== EMPTY ===== */
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 12px;
+  color: rgba(192, 132, 252, 0.28);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.editBtn, .deleteBtn {
+  padding: 5px 14px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: all 0.18s;
+}
+
+.editBtn {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
+}
+
+.editBtn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.25);
+}
+
+.deleteBtn {
+  background: rgba(220, 25, 25, 0.08);
+  border: 1px solid rgba(220, 25, 25, 0.3);
+  color: #f87171;
+}
+
+.deleteBtn:hover {
+  background: rgba(220, 25, 25, 0.2);
+  border-color: rgba(220, 25, 25, 0.6);
+  box-shadow: 0 0 14px rgba(200, 15, 15, 0.3);
+}
+
+/* ===== LIGHT THEME ===== */
+[data-theme="light"] .formCard,
+[data-theme="light"] .tableCard {
+  background: rgba(250, 245, 255, 0.85);
+  border-color: rgba(168, 85, 247, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .h2    { color: #1a0030; }
+[data-theme="light"] .input { background: rgba(168,85,247,0.03); border-color: rgba(168,85,247,0.15); color: #2a0050; }
+[data-theme="light"] .th    { color: rgba(120,40,200,0.5); background: rgba(168,85,247,0.03); }
+[data-theme="light"] .td    { color: rgba(50,10,80,0.7); }

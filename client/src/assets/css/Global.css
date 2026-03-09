@@ -1,0 +1,90 @@
+/* src/global.css */
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   🌑 DARK THEME (DEFAULT)
+   ========================= */
+:root {
+  /* Backgrounds */
+  --bg-color: #0b0b0f;
+  --bg-secondary: #111118;
+  --card-bg: #15151f;
+
+  /* Text */
+  --text-color: #f3f4f6;
+  --text-muted: #9ca3af;
+
+  /* 🔴 RED BRAND COLORS */
+  --primary-color: #ef4444;      /* main red */
+  --primary-hover: #dc2626;
+  --primary-soft: #fee2e2;
+
+  /* UI */
+  --border-color: #27272a;
+  --navbar-bg: #111118;
+  --sidebar-bg: #0f0f15;
+
+  /* Status */
+  --success: #22c55e;
+  --warning: #facc15;
+  --error: #ef4444;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+}
+
+/* =========================
+   🌕 LIGHT THEME
+   ========================= */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-color: #f9fafb;
+  --bg-secondary: #ffffff;
+  --card-bg: #ffffff;
+
+  /* Text */
+  --text-color: #111827;
+  --text-muted: #6b7280;
+
+  /* 🔴 RED BRAND COLORS */
+  --primary-color: #dc2626;
+  --primary-hover: #b91c1c;
+  --primary-soft: #fee2e2;
+
+  /* UI */
+  --border-color: #e5e7eb;
+  --navbar-bg: #ffffff;
+  --sidebar-bg: #ffffff;
+
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+}
+
+/* ===== GLOBAL ===== */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Inter, system-ui, sans-serif;
+  transition: all 0.3s ease;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 14px;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}

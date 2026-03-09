@@ -1,0 +1,343 @@
+/* ══════════════════════════════════════════════════════
+   Sidebar.module.css  —  Theatre Panel · Cinema Noir
+   ══════════════════════════════════════════════════════ */
+
+/* ── Wrapper ──────────────────────────────────────── */
+.Sidebar {
+    width: 240px;
+    height: 100vh;
+    background: rgba(8, 13, 20, 0.95);
+    backdrop-filter: blur(28px) saturate(1.4);
+    -webkit-backdrop-filter: blur(28px) saturate(1.4);
+    border-right: 1px solid rgba(180, 140, 60, 0.16);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: width 0.32s cubic-bezier(.4, 0, .2, 1);
+    box-shadow: 4px 0 32px rgba(0, 0, 0, 0.45);
+}
+
+.collapsed {
+    width: 72px;
+}
+
+/* Gold pinstripe lines */
+.topLine {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af5a, transparent);
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.bottomPinstripe {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af5a, transparent);
+    opacity: 0.25;
+    flex-shrink: 0;
+}
+
+/* ── Top / Logo ───────────────────────────────────── */
+.Top {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.logoBlock {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.logoImg {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    object-position: left;
+    filter: brightness(1.1) sepia(0.3) saturate(1.5);
+}
+
+.logoSub {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(212, 175, 90, 0.5);
+    margin-top: 4px;
+}
+
+.logoCollapsed {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #f0d080;
+    flex: 1;
+    text-align: center;
+}
+
+/* Collapse button */
+.collapseBtn {
+    background: rgba(212, 175, 90, 0.06);
+    border: 1px solid rgba(180, 140, 60, 0.18);
+    border-radius: 2px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(232, 220, 200, 0.4);
+    flex-shrink: 0;
+    transition: all 0.18s;
+}
+
+.collapseBtn:hover {
+    background: rgba(212, 175, 90, 0.14);
+    color: #d4af5a;
+    border-color: rgba(212, 175, 90, 0.35);
+}
+
+/* Gold divider */
+.dividerLine {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,90,0.25), transparent);
+    margin: 0 12px;
+    flex-shrink: 0;
+}
+
+/* ── Nav Menu ─────────────────────────────────────── */
+.menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 14px 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.menu::-webkit-scrollbar { display: none; }
+
+/* ── Menu Item ────────────────────────────────────── */
+.menuItem {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 12px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: rgba(232, 220, 200, 0.38);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.16s;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Collapsed: centre icons */
+.collapsed .menuItem {
+    justify-content: center;
+    padding: 10px 0;
+}
+
+/* Hovered */
+.menuItemHovered {
+    background: rgba(212, 175, 90, 0.04);
+    color: rgba(232, 220, 200, 0.6);
+}
+
+/* Active */
+.menuItemActive {
+    background: rgba(212, 175, 90, 0.1);
+    border-color: rgba(180, 140, 60, 0.22);
+    color: #f0d080;
+    box-shadow: inset 0 0 20px rgba(212, 175, 90, 0.04);
+}
+
+/* Active left accent bar */
+.activeBar {
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, #d4af5a, transparent);
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 0 8px rgba(212, 175, 90, 0.7);
+}
+
+/* Active pulsing dot */
+.activeDot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #d4af5a;
+    box-shadow: 0 0 8px rgba(212, 175, 90, 0.9);
+    flex-shrink: 0;
+    margin-left: auto;
+    animation: pulse 2.2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+}
+
+/* ── Icon ─────────────────────────────────────────── */
+.icon {
+    font-size: 18px !important;
+    color: inherit !important;
+    flex-shrink: 0;
+    transition: color 0.16s;
+}
+
+.iconActive {
+    color: #d4af5a !important;
+}
+
+/* ── Label group ──────────────────────────────────── */
+.labelGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.label {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: inherit;
+    line-height: 1;
+}
+
+.subLabel {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(212, 175, 90, 0.35);
+    line-height: 1;
+}
+
+.menuItemActive .subLabel {
+    color: rgba(212, 175, 90, 0.6);
+}
+
+/* ── Footer / User ────────────────────────────────── */
+.bottomLine {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,90,0.2), transparent);
+    margin: 0 12px;
+    flex-shrink: 0;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 14px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.collapsed .footer {
+    justify-content: center;
+    padding: 14px 10px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a2a3a, #0c1521);
+    border: 1.5px solid rgba(212, 175, 90, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #f0d080;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(212, 175, 90, 0.2);
+}
+
+.footerInfo {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.footerName {
+    display: block;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #e8dcc8;
+    line-height: 1;
+    margin-bottom: 3px;
+}
+
+.footerRole {
+    display: block;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(212, 175, 90, 0.45);
+    line-height: 1;
+}
+
+.logoutIcon {
+    font-size: 16px !important;
+    color: rgba(232, 220, 200, 0.3) !important;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.18s;
+}
+
+.logoutIcon:hover {
+    color: #fb7185 !important;
+}
+
+/* ── Light theme ──────────────────────────────────── */
+[data-theme="light"] .Sidebar {
+    background: rgba(248, 244, 235, 0.97);
+    border-right-color: rgba(180, 140, 60, 0.25);
+}
+
+[data-theme="light"] .menuItem {
+    color: rgba(80, 60, 20, 0.45);
+}
+
+[data-theme="light"] .menuItemActive {
+    background: rgba(180, 140, 60, 0.1);
+    color: #8a6a10;
+    border-color: rgba(180, 140, 60, 0.3);
+}
+
+[data-theme="light"] .label {
+    color: inherit;
+}
+
+[data-theme="light"] .footerName {
+    color: #3a2e1a;
+}
+
+[data-theme="light"] .collapseBtn {
+    color: rgba(80, 60, 20, 0.5);
+}

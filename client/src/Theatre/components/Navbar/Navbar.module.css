@@ -1,0 +1,460 @@
+/* ══════════════════════════════════════════════════
+   Navbar.module.css  —  Theatre Panel · Cinema Noir
+   ══════════════════════════════════════════════════ */
+
+/* ── Wrapper ─────────────────────────────────────── */
+.Navbar {
+    width: 100%;
+    height: 68px;
+    background: rgba(8, 13, 20, 0.92);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-bottom: 1px solid rgba(180, 140, 60, 0.16);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+/* Gold pinstripe lines */
+.topLine {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af5a, transparent);
+    opacity: 0.55;
+    flex-shrink: 0;
+}
+
+.bottomLine {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,90,0.25), transparent);
+    flex-shrink: 0;
+}
+
+/* ── Container ───────────────────────────────────── */
+.NavbarContainer {
+    flex: 1;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* ── Left group ──────────────────────────────────── */
+.leftGroup {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.filmStrip {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0.5;
+}
+
+.filmHole {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(212, 175, 90, 0.15);
+    border: 1px solid rgba(212, 175, 90, 0.3);
+}
+
+/* ── Search ──────────────────────────────────────── */
+.Search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(180, 140, 60, 0.18);
+    border-radius: 2px;
+    padding: 7px 14px;
+    width: 220px;
+    transition: border-color 0.2s, box-shadow 0.2s, width 0.3s;
+}
+
+.SearchFocused {
+    border-color: rgba(212, 175, 90, 0.45);
+    box-shadow: 0 0 0 3px rgba(212, 175, 90, 0.07);
+    width: 280px;
+}
+
+.searchIcon {
+    font-size: 16px !important;
+    color: rgba(212, 175, 90, 0.4) !important;
+    flex-shrink: 0;
+}
+
+.Search input {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #e8dcc8;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 13px;
+    width: 100%;
+    letter-spacing: 0.04em;
+}
+
+.Search input::placeholder {
+    color: rgba(232, 220, 200, 0.22);
+    font-style: italic;
+}
+
+/* ── Right items ─────────────────────────────────── */
+.items {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    color: rgba(232, 220, 200, 0.4);
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    transition: all 0.18s;
+}
+
+.item:hover {
+    color: #d4af5a;
+    background: rgba(212, 175, 90, 0.08);
+}
+
+.itemLabel {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    color: inherit;
+}
+
+.item:has(.itemLabel) {
+    width: auto;
+    padding: 0 10px;
+}
+
+/* ── Icons ───────────────────────────────────────── */
+.icon {
+    font-size: 18px !important;
+    color: inherit !important;
+    transition: color 0.18s;
+}
+
+.iconAmber {
+    font-size: 18px !important;
+    color: #f59e0b !important;
+}
+
+.themeToggle:hover {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+}
+
+/* ── Vertical divider ────────────────────────────── */
+.divider {
+    width: 1px;
+    height: 22px;
+    background: linear-gradient(180deg, transparent, rgba(212,175,90,0.22), transparent);
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+/* ── Notification counter ────────────────────────── */
+.counter {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    background: linear-gradient(135deg, #c01010, #7a0808);
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 9px;
+    font-weight: 700;
+    top: 4px;
+    right: 4px;
+    box-shadow: 0 0 8px rgba(192, 16, 16, 0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+    pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════
+   PROFILE WRAPPER + DROPDOWN
+   ══════════════════════════════════════════════════ */
+
+.profileWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 4px 8px 4px 4px;
+    border-radius: 2px;
+    border: 1px solid rgba(180, 140, 60, 0.16);
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.18s;
+    user-select: none;
+}
+
+.profileWrapper:hover,
+.profileWrapperOpen {
+    border-color: rgba(212, 175, 90, 0.38);
+    background: rgba(212, 175, 90, 0.06);
+}
+
+.profileImg {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid rgba(212, 175, 90, 0.45);
+    box-shadow: 0 0 10px rgba(212, 175, 90, 0.2);
+    flex-shrink: 0;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.profileName {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #e8dcc8;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.profileRole {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(212, 175, 90, 0.5);
+    line-height: 1;
+}
+
+/* Chevron arrow */
+.chevron {
+    font-size: 18px !important;
+    color: rgba(212, 175, 90, 0.4) !important;
+    transition: transform 0.22s ease !important;
+    flex-shrink: 0;
+}
+
+.chevronOpen {
+    transform: rotate(180deg) !important;
+    color: #d4af5a !important;
+}
+
+/* ── Dropdown Panel ──────────────────────────────── */
+.dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 260px;
+    background: rgba(10, 16, 26, 0.98);
+    backdrop-filter: blur(32px) saturate(1.8);
+    -webkit-backdrop-filter: blur(32px) saturate(1.8);
+    border: 1px solid rgba(180, 140, 60, 0.2);
+    border-radius: 14px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.75);
+    z-index: 200;
+    overflow: hidden;
+    animation: dropdownIn 0.18s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes dropdownIn {
+    from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* ── Dropdown Header — large photo like screenshot ── */
+.dropdownHeader {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 18px 16px;
+}
+
+.dropdownProfileImg {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(212,175,90,0.45);
+    box-shadow: 0 0 16px rgba(212,175,90,0.22);
+    flex-shrink: 0;
+}
+
+.dropdownUserInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;
+}
+
+.dropdownName {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #f0d080;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1;
+}
+
+.dropdownEmail {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    color: rgba(232,220,200,0.32);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Simple divider ──────────────────────────────── */
+.dropdownDivider {
+    height: 1px;
+    background: rgba(180,140,60,0.14);
+    margin: 0 14px;
+}
+
+/* ── Dropdown Menu — clean rows like screenshot ───── */
+.dropdownMenu {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 8px;
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: rgba(232,220,200,0.65);
+    transition: all 0.15s;
+}
+
+.dropdownItem:hover {
+    background: rgba(212,175,90,0.08);
+    color: #e8dcc8;
+}
+
+.dropdownItemIcon {
+    font-size: 18px !important;
+    color: rgba(212,175,90,0.5) !important;
+    flex-shrink: 0;
+    transition: color 0.15s;
+}
+
+.dropdownItem:hover .dropdownItemIcon {
+    color: #d4af5a !important;
+}
+
+.dropdownItemLabel {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: inherit;
+    letter-spacing: 0.02em;
+}
+
+/* ── Sign Out button ─────────────────────────────── */
+.logoutBtn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: calc(100% - 16px);
+    margin: 4px 8px 10px;
+    padding: 12px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: rgba(251,113,133,0.6);
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+}
+
+.logoutBtn:hover {
+    background: rgba(251,113,133,0.08);
+    color: #fb7185;
+}
+
+/* ── Light theme overrides ───────────────────────── */
+[data-theme="light"] .Navbar {
+    background: rgba(248, 244, 235, 0.96);
+    border-bottom-color: rgba(180, 140, 60, 0.25);
+}
+
+[data-theme="light"] .Search {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(180, 140, 60, 0.28);
+}
+
+[data-theme="light"] .Search input,
+[data-theme="light"] .Search input::placeholder {
+    color: #5a4a2a;
+}
+
+[data-theme="light"] .item {
+    color: rgba(80, 60, 20, 0.5);
+}
+
+[data-theme="light"] .item:hover {
+    color: #b8912a;
+    background: rgba(180, 140, 60, 0.1);
+}
+
+[data-theme="light"] .profileName {
+    color: #3a2e1a;
+}
+
+[data-theme="light"] .profileWrapper {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(180, 140, 60, 0.28);
+}
+
+[data-theme="light"] .dropdown {
+    background: rgba(248, 244, 235, 0.98);
+    border-color: rgba(180, 140, 60, 0.3);
+}
+
+[data-theme="light"] .dropdownName {
+    color: #6b4e10;
+}
+
+[data-theme="light"] .dropdownEmail {
+    color: rgba(80, 60, 20, 0.45);
+}
+
+[data-theme="light"] .dropdownItem {
+    color: rgba(80, 60, 20, 0.55);
+}
+
+[data-theme="light"] .dropdownItem:hover {
+    background: rgba(180, 140, 60, 0.08);
+}

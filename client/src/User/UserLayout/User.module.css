@@ -1,0 +1,58 @@
+/* Full height fix */
+html,
+body,
+:global(#root) {
+  height: 100%;
+  margin: 0;
+  font-family: 'poppins', sans-serif;
+}
+
+/* Main layout */
+.userLayout {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("src/assets/Banner/backgroundImage.png");
+  display: flex;
+  flex-direction: column;
+ 
+  overflow: hidden;
+}
+
+/* Push footer down */
+.content {
+  flex: 1;
+}
+
+/* 🎬 Animated glow layer */
+.userLayout::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  background:
+    radial-gradient(
+      600px 400px at 20% 30%,
+      rgba(255, 0, 80, 0.35),
+      transparent 70%
+    ),
+    radial-gradient(
+      600px 400px at 80% 70%,
+      rgba(180, 0, 255, 0.35),
+      transparent 70%
+    );
+  filter: blur(120px);
+  animation: glowMove 20s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+/* Smooth slow animation */
+@keyframes glowMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-5%, -3%);
+  }
+  100% {
+    transform: translate(5%, 3%);
+  }
+}

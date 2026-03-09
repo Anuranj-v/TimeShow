@@ -1,0 +1,61 @@
+.container{
+padding:30px;
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+}
+
+.table th,
+.table td{
+padding:12px;
+border-bottom:1px solid #ddd;
+}
+
+.photo{
+width:60px;
+height:60px;
+object-fit:cover;
+border-radius:6px;
+}
+
+.approveBtn{
+background:#28a745;
+color:white;
+border:none;
+padding:6px 12px;
+margin-right:5px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.rejectBtn{
+background:#dc3545;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.pending{
+background:orange;
+color:white;
+padding:4px 10px;
+border-radius:5px;
+}
+
+.approved{
+background:green;
+color:white;
+padding:4px 10px;
+border-radius:5px;
+}
+
+.rejected{
+background:red;
+color:white;
+padding:4px 10px;
+border-radius:5px;
+}

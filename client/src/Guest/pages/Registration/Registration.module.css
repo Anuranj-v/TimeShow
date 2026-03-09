@@ -1,0 +1,292 @@
+/* ===== Overlay ===== */
+.overlay {
+  min-height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeBg 0.5s ease;
+}
+
+@keyframes fadeBg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== Card ===== */
+.signupCard {
+  width: 420px;
+  background: #111;
+  border-radius: 18px;
+  padding: 32px;
+  position: relative;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  animation: slideUp 0.5s ease;
+  transition: transform 0.3s ease;
+}
+
+.signupCard:hover {
+  transform: translateY(-4px);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Close Button ===== */
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.closeBtn:hover {
+  color: #fff;
+}
+
+/* ===== Titles ===== */
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+/* ===== Google Button ===== */
+.googleBtn {
+  width: 100%;
+  height: 46px;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.googleBtn:hover {
+  background: #222;
+}
+
+.googleBtn img {
+  width: 18px;
+}
+
+/* ===== Divider ===== */
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 22px 0;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #333;
+}
+
+.divider span {
+  background: #111;
+  padding: 0 12px;
+  color: #888;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Labels ===== */
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+  color: #ddd;
+}
+
+/* ===== Inputs ===== */
+.input {
+  width: 100%;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  padding: 0 14px;
+  font-size: 14px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  background: #1c1c1c;
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+.input::placeholder {
+  color: #666;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #ff4b2b;
+  box-shadow: 0 0 10px rgba(255,75,43,0.4);
+}
+
+/* ===== Phone Input ===== */
+.phoneInput {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.select,
+.code {
+  height: 44px;
+  width: 55px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  padding: 0 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  background: #1c1c1c;
+  color: #fff;
+}
+
+/* ===== Continue Button ===== */
+.continueBtn {
+  width: 100%;
+  height: 46px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.continueBtn:hover {
+  box-shadow: 0 6px 20px rgba(255,75,43,0.4);
+}
+
+.continueBtn:active {
+  transform: scale(0.96);
+}
+
+.continueBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===== Spinner ===== */
+.loader {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Sign In Text ===== */
+.signinText {
+  text-align: center;
+  margin: 18px 0;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.signinText a {
+  color: #ff4b2b;
+  text-decoration: none;
+}
+
+.signinText a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Shake Animation ===== */
+.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
+}
+
+
+
+.autoWrap{
+  position:relative;
+}
+
+.autoDrop{
+  position:absolute;
+  width:100%;
+  background:#111;
+  border-radius:10px;
+  margin-top:6px;
+  max-height:200px;
+  overflow-y:auto;
+  box-shadow:0 8px 20px rgba(0,0,0,0.5);
+  border:1px solid #222;
+}
+
+.cityItem{
+  padding:12px 14px;
+  color:#fff;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  border-bottom:1px solid #1f1f1f;
+}
+
+.cityItem:hover{
+  background:#ff3b3b;
+  color:white;
+}
+
+.autoItemMuted{
+  padding:12px;
+  color:#888;
+}

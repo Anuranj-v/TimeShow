@@ -1,0 +1,77 @@
+.footer {
+  background: #0b0b0b;
+  color: #fff;
+  padding: 60px 80px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* Left section */
+
+.left {
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Logo */
+
+.logoImg {
+  width: 220px;
+  height: auto;
+}
+
+/* Description */
+
+.desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #cfcfcf;
+}
+
+/* Store buttons */
+
+.stores {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.stores img {
+  height: 45px;
+  cursor: pointer;
+}
+
+/* Right columns */
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.column h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.column a {
+  text-decoration: none;
+  color: #cfcfcf;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.column a:hover {
+  color: #ff4d6d;
+}
+
+.column p {
+  font-size: 14px;
+  color: #cfcfcf;
+}

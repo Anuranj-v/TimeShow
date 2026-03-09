@@ -1,0 +1,97 @@
+.page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #2a0d16, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #ff4d6d;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field label {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.field input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.field input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.cancel {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.save {
+  background: #ff4d6d;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.save:hover {
+  background: #ff2f55;
+}
+.Btn {
+   background: #ff4d6d;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  text-decoration: none; /* VERY IMPORTANT */
+  display: inline-block;
+  transition: 0.2s ease;
+}
+
+.Btn:hover {
+  background: #ff2f55;
+  transform: translateY(-2px);
+}

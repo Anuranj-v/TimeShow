@@ -1,0 +1,176 @@
+/* ================= BACKGROUND ================= */
+.paymentPage {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+
+  background:
+    /* linear-gradient(rgba(10,10,25,0.75), rgba(10,10,25,0.75)), */
+    url("../../../assets/Banner/cinema-bg.png");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ================= GLASS CARD ================= */
+.paymentCard {
+  width: 100%;
+  max-width: 520px;
+  padding: 30px;
+  border-radius: 28px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+}
+
+/* ================= TITLE ================= */
+.paymentTitle {
+  font-size: 26px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 25px;
+}
+
+/* ================= INNER CARD ================= */
+.innerCard {
+  background: linear-gradient(145deg, #f7f3f6, #ece6ea);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  color: #222;
+}
+
+/* ================= SUMMARY ================= */
+.summaryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.summaryHeader h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 25px;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+.totalAmount {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* ================= BADGE WRAPPER ================= */
+.badgeWrapper {
+  background: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  display: flex;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.badgeWrapper img {
+  width: 35px;
+  height: auto;
+}
+
+/* ================= DIVIDER ================= */
+.divider {
+  height: 1px;
+  background: #ddd;
+  margin: 20px 0;
+}
+
+/* ================= FORM ================= */
+.paymentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formGroup input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+  font-size: 14px;
+  color: #222;
+}
+
+.formRow {
+  display: flex;
+  gap: 10px;
+}
+
+.formRow .formGroup {
+  flex: 1;
+}
+
+/* ================= CARD INPUT ICONS ================= */
+.cardInputWrapper {
+  position: relative;
+}
+
+.cardInputWrapper input {
+  width: 100%;
+  padding-right: 85px;
+}
+
+.cardIcons {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.cardIcons img {
+  width: 30px;
+}
+
+/* ================= BUTTON ================= */
+.paymentBtn {
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 18px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ff1e3c, #ff3f6c);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(255,30,60,0.5);
+  transition: 0.3s ease;
+}
+
+.paymentBtn:hover {
+  transform: translateY(-3px);
+}
+
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  font-size: 18px;
+  font-weight: 600;
+}

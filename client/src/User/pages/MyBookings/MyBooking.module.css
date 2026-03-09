@@ -1,0 +1,346 @@
+.page {
+    background: #050005;
+    min-height: 100vh;
+    padding: 60px 140px;
+    color: white;
+    font-family: system-ui;
+}
+
+/* ── HEADER ── */
+.header {
+    margin-bottom: 40px;
+}
+
+.path {
+    color: #8b2c2c;
+    letter-spacing: 4px;
+    font-size: 11px;
+}
+
+.title {
+    font-size: 46px;
+    font-family: serif;
+    margin: 10px 0;
+}
+
+.sub {
+    color: #999;
+    font-size: 14px;
+}
+
+/* ── CONTAINER ── */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+/* ── CARD ── */
+.card {
+    display: flex;
+    background: #120000;
+    border: 1px solid #450000;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s;
+    min-height: 200px;
+    position: relative;
+}
+
+.card:hover {
+    border-color: #a00000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.25);
+}
+
+/* Pending card — amber-tinted border */
+.cardPending {
+    border-color: #5a3d00;
+}
+
+.cardPending:hover {
+    border-color: #c47f00;
+    box-shadow: 0 0 30px rgba(255, 180, 0, 0.18);
+}
+
+/* ── POSTER ── */
+.poster {
+    width: 150px;
+    min-height: 100%;
+    overflow: hidden;
+    border-right: 1px solid #330000;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Pending ribbon on poster */
+.pendingRibbon {
+    position: absolute;
+    top: 16px;
+    left: -22px;
+    background: linear-gradient(135deg, #b37800, #f5a800);
+    color: #1a0e00;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    padding: 5px 30px;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    box-shadow: 0 2px 10px rgba(245, 168, 0, 0.4);
+    width: 110px;
+    text-align: center;
+}
+
+/* ── CONTENT ── */
+.content {
+    flex: 1;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ── GENRE ── */
+.genre {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #a33;
+}
+
+/* ── MOVIE TITLE ── */
+.movie {
+    font-size: 26px;
+    font-weight: bold;
+    font-family: serif;
+}
+
+/* ── META INFO ── */
+.meta {
+    display: flex;
+    gap: 15px;
+    color: #aaa;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+
+.meta span::before {
+    content: "• ";
+    color: #a00000;
+}
+
+/* ── BOTTOM ROW ── */
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ── STATUS ── */
+.statusRow {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.paid {
+    background: #002b18;
+    color: #2ecc71;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.pending {
+    background: rgba(245, 168, 0, 0.1);
+    color: #f5a800;
+    border: 1px solid rgba(245, 168, 0, 0.3);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* ── PRICE ── */
+.amount {
+    color: #ff3333;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* ── ACTION BUTTONS WRAPPER ── */
+.actionBtns {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ── PAY NOW BUTTON ── */
+.repayBtn {
+    background: linear-gradient(135deg, #b37800, #f5a800);
+    border: none;
+    color: #1a0e00;
+    padding: 11px 26px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    transition: all 0.25s;
+    box-shadow: 0 4px 18px rgba(245, 168, 0, 0.35);
+    white-space: nowrap;
+}
+
+.repayBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(245, 168, 0, 0.55);
+    background: linear-gradient(135deg, #c98900, #ffc107);
+}
+
+.repayBtn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── VIEW TICKET BUTTON ── */
+.ticketBtn {
+    background: transparent;
+    border: 1px solid #ff3333;
+    color: #ff3333;
+    padding: 10px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 13px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.ticketBtn:hover {
+    background: #ff3333;
+    color: white;
+}
+
+/* ── REVIEW HEADER ── */
+.reviewHeader {
+    margin-top: 20px;
+    padding: 14px 0;
+    border-top: 1px solid #3a0000;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffdddd;
+    transition: 0.2s;
+}
+
+.reviewHeader:hover {
+    color: #ff4444;
+}
+
+.arrow {
+    font-size: 14px;
+    color: #ff3333;
+}
+
+/* ── REVIEW BOX ── */
+.reviewBox {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #3a0000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: expand 0.3s ease;
+}
+
+/* ── REVIEW TEXTAREA ── */
+.reviewInput {
+    background: #1a0000;
+    border: 1px solid #4a0000;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    resize: none;
+    min-height: 80px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.reviewInput:focus {
+    border-color: #ff2a2a;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+}
+
+/* ── SUBMIT REVIEW BUTTON ── */
+.reviewBtn {
+    width: 150px;
+    background: linear-gradient(135deg, #ff1e1e, #b30000);
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.reviewBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* ── STAR RATING ── */
+.starRating {
+    display: flex;
+    gap: 6px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.star {
+    color: #444;
+    transition: 0.25s;
+}
+
+.star:hover {
+    color: #ffc107;
+    transform: scale(1.2);
+}
+
+.starActive {
+    color: #ffc107;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
+}
+
+/* ── EXPAND ANIMATION ── */
+@keyframes expand {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0);     }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .page { padding: 40px 24px; }
+}
+
+@media (max-width: 600px) {
+    .card     { flex-direction: column; }
+    .poster   { width: 100%; height: 200px; border-right: none; border-bottom: 1px solid #330000; }
+    .bottom   { flex-direction: column; align-items: flex-start; }
+    .actionBtns { flex-direction: column; width: 100%; }
+    .repayBtn, .ticketBtn { width: 100%; text-align: center; }
+}

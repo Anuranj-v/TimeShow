@@ -1,0 +1,198 @@
+.container {
+    padding: 2rem;
+    min-height: 100vh;
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.addBtn {
+    background: #3a86ff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.tableSection {
+    background: rgba(255,255,255,0.03);
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.movieCell {
+    font-weight: 600;
+}
+
+.genreTag {
+    background: rgba(58,134,255,0.2);
+    color: #3a86ff;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.deleteBtn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.noResults {
+    text-align: center;
+    opacity: 0.5;
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: #111116;
+    padding: 2rem;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 800px;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.closeX {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.movieCardGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.movieCard {
+    background: rgba(255,255,255,0.03);
+    border-radius: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.2s;
+}
+
+.movieCard:hover {
+    transform: translateY(-4px);
+}
+
+.selectedCard {
+    border-color: #3a86ff;
+    box-shadow: 0 0 10px rgba(58,134,255,0.5);
+}
+
+.cardPoster img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.cardInfo {
+    padding: 8px;
+    text-align: center;
+}
+
+.genreChips {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.genreChip {
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.selectedGenre {
+    background: #3a86ff;
+    color: white;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.saveBtn {
+    background: #3a86ff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.cancelBtn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 24px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+.selectInput {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.selectInput option {
+    background: #111116;
+    color: white;
+}

@@ -1,0 +1,208 @@
+/* ══════════════════════════════════════════════════
+   EditProfile.module.css  —  Theatre Panel · Cinema Noir
+   ══════════════════════════════════════════════════ */
+
+.page {
+    min-height: 100vh;
+    padding: 60px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #e8dcc8;
+    font-family: 'DM Mono', 'Courier New', monospace;
+}
+
+/* ── Card ─────────────────────────────────────────── */
+.card {
+    width: 100%;
+    max-width: 560px;
+    background: rgba(15, 25, 40, 0.85);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid rgba(180, 140, 60, 0.18);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.cardTopLine {
+    height: 2px;
+    background: linear-gradient(90deg, #d4af5a, rgba(212,175,90,0.2), transparent);
+}
+
+/* ── Header ───────────────────────────────────────── */
+.cardHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 24px 28px 20px;
+}
+
+.filmDots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding-top: 4px;
+    flex-shrink: 0;
+}
+
+.filmDot {
+    width: 6px;
+    height: 8px;
+    border-radius: 1px;
+    border: 1px solid rgba(212,175,90,0.22);
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(212,175,90,0.5);
+    margin-bottom: 5px;
+}
+
+.pageTitle {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #f0d080;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.avatarCircle {
+    margin-left: auto;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a2a3a, #0c1521);
+    border: 2px solid rgba(212,175,90,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display','Georgia',serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #f0d080;
+    flex-shrink: 0;
+    box-shadow: 0 0 18px rgba(212,175,90,0.18);
+}
+
+/* ── Perforation ──────────────────────────────────── */
+.perforation {
+    display: flex;
+    overflow: hidden;
+    margin: 0 28px;
+    height: 1px;
+}
+
+.perfDash { flex: 1; height: 1px; }
+
+/* ── Form ─────────────────────────────────────────── */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 28px 8px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.fieldLabel {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(212,175,90,0.55);
+}
+
+.fieldInput {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(180,140,60,0.18);
+    border-radius: 2px;
+    color: #e8dcc8;
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 14px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.fieldInput:focus {
+    border-color: rgba(212,175,90,0.42);
+    box-shadow: 0 0 0 3px rgba(212,175,90,0.07);
+}
+
+.fieldInput::placeholder {
+    color: rgba(232,220,200,0.2);
+    font-style: italic;
+}
+
+/* ── Actions ──────────────────────────────────────── */
+.actions {
+    display: flex;
+    gap: 12px;
+    padding: 20px 28px 26px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.btnGhost {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 18px;
+    border-radius: 2px;
+    border: 1px solid rgba(232,220,200,0.15);
+    background: transparent;
+    color: rgba(232,220,200,0.45);
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.18s;
+}
+
+.btnGhost:hover {
+    border-color: rgba(232,220,200,0.3);
+    color: #e8dcc8;
+    background: rgba(255,255,255,0.03);
+}
+
+.btnGold {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 22px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #b8952a, #d4af5a);
+    border: none;
+    color: #1a0e00;
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(212,175,90,0.28);
+}
+
+.btnGold:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(212,175,90,0.42);
+    background: linear-gradient(135deg, #c9a63a, #e8c870);
+}
+
+.btnGold:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .actions { justify-content: stretch; flex-direction: column; }
+    .btnGold, .btnGhost { text-align: center; justify-content: center; }
+}

@@ -1,0 +1,232 @@
+/* ============================================================
+   NAVBAR — Red × Black Glass Theme
+   ============================================================ */
+
+.Navbar {
+  width: 100%;
+  height: 64px;
+  background: rgba(12, 2, 2, 0.75);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  border-bottom: 1px solid rgba(220, 25, 25, 0.15);
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.5),
+    0 1px 0 rgba(220, 25, 25, 0.1) inset;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.NavbarContainer {
+  height: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== SEARCH ===== */
+.Search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(220, 25, 25, 0.18);
+  padding: 7px 14px;
+  border-radius: 8px;
+  width: 220px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.Search:focus-within {
+  border-color: rgba(220, 25, 25, 0.45);
+  box-shadow: 0 0 0 3px rgba(220, 25, 25, 0.08);
+}
+
+.Search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ffe0e0;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.04em;
+  width: 100%;
+}
+
+.Search input::placeholder {
+  color: rgba(255, 130, 130, 0.28);
+}
+
+/* search icon inside bar */
+.Search .icon {
+  color: rgba(255, 100, 100, 0.35) !important;
+  font-size: 17px !important;
+  flex-shrink: 0;
+}
+
+/* ===== ITEMS ===== */
+.items {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: rgba(255, 130, 130, 0.45);
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.18s ease;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.item:hover {
+  color: #ff7070;
+  background: rgba(220, 25, 25, 0.1);
+  border-color: rgba(220, 25, 25, 0.25);
+  box-shadow: 0 0 14px rgba(200, 15, 15, 0.15);
+}
+
+/* override icon color to inherit from .item */
+.item .icon {
+  font-size: 19px !important;
+  color: inherit !important;
+  transition: color 0.18s;
+}
+
+/* label next to language icon */
+.itemLabel {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: inherit;
+}
+
+/* ===== COUNTER BADGE ===== */
+.counter {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  background: linear-gradient(135deg, #c01010, #7a0808);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  top: 4px;
+  right: 4px;
+  box-shadow: 0 0 10px rgba(200, 20, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: badgePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(200, 20, 20, 0.7); }
+  50%       { box-shadow: 0 0 18px rgba(200, 20, 20, 0.4); }
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(220, 25, 25, 0.18);
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+/* ===== PROFILE ===== */
+.item:last-child {
+  gap: 10px;
+  padding: 5px 10px;
+}
+
+.profileImg {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(220, 25, 25, 0.55);
+  box-shadow: 0 0 12px rgba(200, 20, 20, 0.4);
+  flex-shrink: 0;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.item:last-child:hover .profileImg {
+  border-color: #e83030;
+  box-shadow: 0 0 20px rgba(200, 20, 20, 0.65);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.profileName {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff5f5;
+  font-family: 'Georgia', serif;
+  line-height: 1;
+}
+
+.profileRole {
+  font-size: 9px;
+  color: rgba(255, 80, 80, 0.45);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ===== LIGHT THEME OVERRIDES ===== */
+[data-theme="light"] .Navbar {
+  background: rgba(255, 245, 245, 0.88);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border-bottom: 1px solid rgba(220, 25, 25, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .Search {
+  background: rgba(220, 25, 25, 0.04);
+  border-color: rgba(220, 25, 25, 0.15);
+}
+
+[data-theme="light"] .Search input {
+  color: #2a0505;
+}
+
+[data-theme="light"] .Search input::placeholder {
+  color: rgba(180, 60, 60, 0.35);
+}
+
+[data-theme="light"] .item {
+  color: rgba(160, 30, 30, 0.55);
+}
+
+[data-theme="light"] .item:hover {
+  color: #c01010;
+  background: rgba(220, 25, 25, 0.07);
+}
+
+[data-theme="light"] .profileName {
+  color: #1a0505;
+}
+
+[data-theme="light"] .profileRole {
+  color: rgba(180, 30, 30, 0.5);
+}
+
+[data-theme="light"] .divider {
+  background: rgba(220, 25, 25, 0.12);
+}

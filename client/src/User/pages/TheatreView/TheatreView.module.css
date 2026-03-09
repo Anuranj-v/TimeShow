@@ -1,0 +1,80 @@
+.page {
+  padding: 40px 80px;
+  /* background: #f4f6f8; */
+  min-height: 100vh;
+}
+
+.heading {
+  font-size: 26px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Card */
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff24;
+  padding: 22px 26px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Left */
+.left {
+  max-width: 65%;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: black;
+}
+
+.nameRow h3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.heart {
+  color: #b5b5b5;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.heart:hover {
+  color: #ff4d6d;
+}
+
+.info {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* Show Timings */
+.shows {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.timeBtn {
+  background: #eeeeee50;
+  border-color: rgba(255, 77, 109, 0.6);
+  color: rgb(255, 255, 255);
+  padding: 9px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.timeBtn:hover {
+  background: #000000;
+  color: #ffffff;
+}

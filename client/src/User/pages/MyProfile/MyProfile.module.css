@@ -1,0 +1,87 @@
+/* ===== PAGE ===== */
+.page {
+  min-height: 100vh;
+  padding: 120px 20px;
+  background: radial-gradient(circle at top, #2a0d16, #000);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #fffefe;
+}
+
+/* ===== PROFILE CARD ===== */
+.profileCard {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Title */
+.title {
+  font-size: 26px;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #ff4d6d;
+}
+
+/* ===== INFO GRID ===== */
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.infoItem {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.infoItem span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.infoItem p {
+  margin: 6px 0 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.Btn {
+   background: #ff4d6d;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  text-decoration: none; /* VERY IMPORTANT */
+  display: inline-block;
+  transition: 0.2s ease;
+}
+
+.Btn:hover {
+  background: #ff2f55;
+  transform: translateY(-2px);
+}
+
+
+
+@media (max-width: 600px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+}

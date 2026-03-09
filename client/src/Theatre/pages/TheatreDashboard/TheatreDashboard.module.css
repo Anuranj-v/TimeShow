@@ -1,0 +1,511 @@
+/* ══════════════════════════════════════════════════════
+   TheatreDashboard.module.css  —  Cinema Noir Theme
+   ══════════════════════════════════════════════════════ */
+
+/* ── Base ───────────────────────────────────────────── */
+.page {
+    padding: 2rem 2.2rem;
+    min-height: 100vh;
+    color: #e8dcc8;
+    font-family: 'DM Mono', 'Courier New', monospace;
+}
+
+/* ── Page Header ────────────────────────────────────── */
+.pageHeader {
+    margin-bottom: 2rem;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.filmDots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding-top: 6px;
+}
+
+.filmDot {
+    width: 6px;
+    height: 8px;
+    border-radius: 1px;
+    border: 1px solid rgba(212,175,90,0.22);
+}
+
+.eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(212,175,90,0.55);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.pageTitle {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #f0d080;
+    margin: 0 0 5px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+.pageSub {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(232,220,200,0.45);
+    margin: 0;
+    letter-spacing: 0.04em;
+}
+
+/* ── Stat Cards ─────────────────────────────────────── */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.statCard {
+    background: rgba(15,25,40,0.85);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid rgba(180,140,60,0.18);
+    border-radius: 2px;
+    padding: 22px 24px 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.statCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+}
+
+.statCardTopLine {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+}
+
+.statCornerDots {
+    position: absolute;
+    top: 10px; right: 10px;
+    display: flex;
+    gap: 4px;
+}
+
+.cornerDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(212,175,90,0.15);
+    border: 1px solid rgba(180,140,60,0.18);
+}
+
+.statIcon {
+    font-size: 28px;
+    margin-bottom: 14px;
+}
+
+.statLabel {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.statValue {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 14px;
+}
+
+.statDividerLine {
+    height: 1px;
+    border-radius: 1px;
+    opacity: 0.45;
+}
+
+/* ── Cards ──────────────────────────────────────────── */
+.card {
+    background: rgba(15,25,40,0.85);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border: 1px solid rgba(180,140,60,0.18);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.goldTopLine  { height: 2px; background: linear-gradient(90deg,#d4af5a,transparent); opacity:0.65; }
+.tealTopLine  { height: 2px; background: linear-gradient(90deg,#2dd4bf,transparent); opacity:0.65; }
+.amberTopLine { height: 2px; background: linear-gradient(90deg,#f59e0b,transparent); opacity:0.65; }
+
+/* ── Card Header ────────────────────────────────────── */
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 22px 26px 0;
+    margin-bottom: 4px;
+}
+
+.cardEyebrow {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(212,175,90,0.55);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.cardEyebrowTeal {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(45,212,191,0.55);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.cardEyebrowAmber {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(245,158,11,0.55);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.cardTitle {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #f0d080;
+    line-height: 1;
+}
+
+/* ── Perforation divider ────────────────────────────── */
+.perforation {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin: 16px 26px;
+    height: 1px;
+}
+
+.perfDash {
+    flex: 1;
+    height: 1px;
+}
+
+/* ── Main 2-col Grid ────────────────────────────────── */
+.mainGrid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+/* ── Table ──────────────────────────────────────────── */
+.tableScroll {
+    overflow-x: auto;
+    padding: 0 26px 24px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212,175,90,0.15) transparent;
+}
+
+.tableScroll::-webkit-scrollbar        { height: 4px; }
+.tableScroll::-webkit-scrollbar-thumb  { background: rgba(212,175,90,0.15); border-radius: 2px; }
+.tableScroll::-webkit-scrollbar-track  { background: transparent; }
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead tr {
+    border-bottom: 1px solid rgba(180,140,60,0.18);
+}
+
+.table th {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(232,220,200,0.28);
+    font-weight: 600;
+    padding: 0 12px 14px 0;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 14px 12px 14px 0;
+    border-bottom: 1px solid rgba(180,140,60,0.08);
+    font-size: 14px;
+    color: rgba(232,220,200,0.6);
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child td { border-bottom: none; }
+
+.table tbody tr:hover td {
+    background: rgba(212,175,90,0.03);
+}
+
+/* Cell variants */
+.refCell {
+    font-family: 'DM Mono','Courier New',monospace !important;
+    font-size: 13px !important;
+    color: #d4af5a !important;
+    font-weight: 600 !important;
+    white-space: nowrap;
+}
+
+.guestCell {
+    font-family: 'Playfair Display','Georgia',serif !important;
+    font-size: 16px !important;
+    color: #e8dcc8 !important;
+    white-space: nowrap;
+}
+
+.featureCell {
+    font-family: 'Cormorant Garamond','Georgia',serif !important;
+    font-style: italic;
+    font-size: 16px !important;
+    color: rgba(232,220,200,0.55) !important;
+    white-space: nowrap;
+}
+
+.seatsCell {
+    font-family: 'DM Mono','Courier New',monospace !important;
+    font-size: 15px !important;
+    color: rgba(232,220,200,0.5) !important;
+    text-align: center;
+}
+
+.amountCell {
+    font-family: 'DM Mono','Courier New',monospace !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    color: #f0d080 !important;
+    white-space: nowrap;
+}
+
+.timeCell {
+    font-family: 'DM Mono','Courier New',monospace !important;
+    font-size: 13px !important;
+    color: rgba(232,220,200,0.28) !important;
+    white-space: nowrap;
+}
+
+.emptyCell {
+    text-align: center !important;
+    padding: 3.5rem 1rem !important;
+    font-family: 'Cormorant Garamond','Georgia',serif !important;
+    font-style: italic;
+    font-size: 18px !important;
+    color: rgba(232,220,200,0.22) !important;
+}
+
+/* ── Status Badge ───────────────────────────────────── */
+.statusBadge {
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ── Today's Shows List ─────────────────────────────── */
+.showsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 22px 24px;
+}
+
+.showItem {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(180,140,60,0.12);
+    border-radius: 2px;
+    padding: 16px 18px;
+    transition: border-color 0.2s;
+}
+
+.showItem:hover {
+    border-color: rgba(180,140,60,0.25);
+}
+
+.showItemRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.showTitle {
+    font-family: 'Playfair Display','Georgia',serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #e8dcc8;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.showMeta {
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 12px;
+    color: rgba(232,220,200,0.35);
+    letter-spacing: 0.06em;
+}
+
+.showRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.formatBadge {
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    padding: 3px 10px;
+    border-radius: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.showPct {
+    font-family: 'Playfair Display','Georgia',serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.showPctSign {
+    font-size: 14px;
+}
+
+.occupancyBarBg {
+    height: 3px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 7px;
+}
+
+.occupancyBarFill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.7s ease;
+}
+
+.showSeatsInfo {
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 12px;
+    color: rgba(232,220,200,0.28);
+    letter-spacing: 0.08em;
+}
+
+/* ── Top Movies ─────────────────────────────────────── */
+.topMoviesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 0 26px 26px;
+}
+
+.movieBarItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.movieBarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.movieBarTitle {
+    font-family: 'Playfair Display','Georgia',serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #e8dcc8;
+}
+
+.movieBarRevenue {
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.movieBarBg {
+    height: 6px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.movieBarFill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.7s ease;
+}
+
+.movieBarSub {
+    font-family: 'DM Mono','Courier New',monospace;
+    font-size: 12px;
+    color: rgba(232,220,200,0.28);
+    letter-spacing: 0.08em;
+}
+
+/* ── Empty State ────────────────────────────────────── */
+.emptyState {
+    font-family: 'Cormorant Garamond','Georgia',serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(232,220,200,0.22);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    grid-column: 1 / -1;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 1100px) {
+    .statsGrid  { grid-template-columns: repeat(2,1fr); }
+    .mainGrid   { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    .page           { padding: 1.2rem 1rem; }
+    .statsGrid      { grid-template-columns: 1fr; }
+    .topMoviesGrid  { grid-template-columns: 1fr; }
+    .pageTitle      { font-size: 30px; }
+    .statValue      { font-size: 30px; }
+    .cardTitle      { font-size: 20px; }
+}

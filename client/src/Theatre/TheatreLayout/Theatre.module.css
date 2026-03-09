@@ -1,0 +1,11 @@
+.home {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+.homecontainer {
+  flex: 6;
+  background-color: var(--bg-secondary);
+  padding: 20px;
+}
