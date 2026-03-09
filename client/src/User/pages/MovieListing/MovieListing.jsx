@@ -12,6 +12,12 @@ const MovieListing = () => {
     const [heroMovie, setHeroMovie] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [movielistingDatas, setmovielistingDatas] = useState([]);
+    const [genre, setGenre] = useState("All");
+    const filteredMovies =
+        genre === "All"
+            ? movielistingDatas
+            : movielistingDatas.filter((m) => m.movie_genre === genre);
+
     const loadmovielisting = () => {
         axios.get(`http://127.0.0.1:8000/Movie/`)
             .then((response) => {
@@ -51,35 +57,29 @@ const MovieListing = () => {
 
 
             <div className={styles.page}>
-                {/* 🔥 HERO BANNER
-                {heroMovie && (
-                    <section className={styles.hero}>
-                        <div className={styles.heroBackground}>
-                            <img
-                                src={`http://127.0.0.1:8000/${heroMovie.movie_banner}`}
-                                alt={heroMovie.movie_title}
-                            />
-                        </div>
-
-                        <div className={styles.heroContent}>
-                            <h1>{heroMovie.movie_title}</h1>
-                            <p>{heroMovie.info}</p>
-
-                            <Link
-                                to={`/User/movie/${heroMovie.id}`}
-                                className={styles.heroBtn}
-                            >
-                                Book Now
-                            </Link>
-                        </div>
-                    </section>
-                )} */}
-
                 <h2 className={styles.heading}>Now Showing</h2>
+                <div className={styles.filterBar}>
 
+                    <span>Sort</span>
+
+                    <select
+                        value={genre}
+                        onChange={(e) => setGenre(e.target.value)}
+                        className={styles.genreSelect}
+                    >
+                        <option value="All">All</option>
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Romance">Romance</option>
+                    </select>
+
+                </div>
                 <div className={styles.grid} >
                     {
-                        movielistingDatas.map((d) => (
+                        filteredMovies.map((d) => (
                             <Link to={`/User/movie/${d.id}`} className={styles.card} key={d.id}>
 
                                 <div className={styles.poster}>

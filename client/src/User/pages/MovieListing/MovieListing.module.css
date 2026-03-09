@@ -187,3 +187,20 @@ font-size:20px;
 .badgeTop{
   background:#3b82f6;
 }
+
+.filterBar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+    font-weight:500;
+    margin-left:1250px;
+}
+
+.genreSelect{
+    padding:6px 10px;
+    /* color:#000000; */
+    border-radius:6px;
+    border:1px solid #cccccc29;
+    /* background: transparent; */
+}

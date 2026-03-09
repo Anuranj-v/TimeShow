@@ -1544,7 +1544,7 @@ def Search(request, key):
         data.append({
             "type": "Theatre",
             "name": t.theater_name,
-            "link": f"/theatre/movies/{t.id}"
+            "link": f"/TheatreView/movies/{t.id}"
         })
 
     for c in cities:
