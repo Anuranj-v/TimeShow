@@ -13,6 +13,7 @@ import MyBookings from '../User/pages/MyBookings/Mybooking';
 import DateTime from '../User/pages/DateTime/DateTime';
 import UserDashboard from '../User/pages/UserDashboard/UserDashboard';
 import MoviePage from '../User/pages/moviePage/MoviePage';
+import ComingSoon from '../User/pages/Comingsoon/Comingsoon';
 
 const UserRoutes = () => {
     return (
@@ -28,6 +29,7 @@ const UserRoutes = () => {
             <Route path="/movies/:theatreId" element={<MoviePage />} />
             <Route path="/mybookings" element={<MyBookings />} />
             <Route path="/DateTime/:theaterId/:movieId" element={<DateTime />} />
+            <Route path="/ComingSoon" element={<ComingSoon />} />
         </Routes>
     );
 };

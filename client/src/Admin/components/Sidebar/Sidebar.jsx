@@ -13,7 +13,7 @@ import ChairIcon from '@mui/icons-material/Chair';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const NAV_ITEMS = [
-    { to: "/admin/AdminDashboard", icon: <DashboardIcon />, label: "Dashboard" },
+    { to: "/admin/", icon: <DashboardIcon />, label: "Dashboard" },
     { to: "/admin/district", icon: <SlowMotionVideoIcon />, label: "District" },
     // { to: "/admin/Genres", icon: <AddReactionIcon />, label: "Genres" },
     // { to: "/admin/MovieGenres", icon: <MovieIcon />, label: "Movie Genre" },
@@ -23,6 +23,7 @@ const NAV_ITEMS = [
     { to: "/admin/SeatType", icon: <ChairIcon />, label: "Seat Type" },
     { to: "/admin/ListBookings", icon: <ReceiptLongIcon />, label: "Reports" },
     { to: "/admin/Verification", icon: <AddReactionIcon />, label: "Verification" },
+    { to: "/admin/UpcomingMovies", icon: <AddReactionIcon />, label: "Upcoming Movies" },
 ];
 
 const Sidebar = () => {

@@ -80,7 +80,7 @@ const MovieListing = () => {
                 <div className={styles.grid} >
                     {
                         filteredMovies.map((d) => (
-                            <Link to={`/User/movie/${d.id}`} className={styles.card} key={d.id}>
+                            <Link to={`/Guest/movie/${d.id}`} className={styles.card} key={d.id}>
 
                                 <div className={styles.poster}>
                                     <img src={`http://127.0.0.1:8000/${d.movie_poster}`} />
@@ -99,7 +99,7 @@ const MovieListing = () => {
                                     <p>{d.info}</p>
 
                                     <div className={styles.bottom}>
-                                        <Link to={`/User/movie/${d.id}`} className={styles.buyBtn}>
+                                        <Link to={`/Guest/movie/${d.id}`} className={styles.buyBtn}>
                                             Buy Tickets
                                         </Link>
                                         <span className={styles.rating}>

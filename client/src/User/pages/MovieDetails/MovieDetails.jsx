@@ -312,7 +312,7 @@ const MovieDetails = () => {
                                     </div>
 
                                     <div className={styles.ratingRight}>
-                                        ⭐ {r.review_rating}/10
+                                        ⭐ {r.review_rating}/5
                                     </div>
 
                                 </div>

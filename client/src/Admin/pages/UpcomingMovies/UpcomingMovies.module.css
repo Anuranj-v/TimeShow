@@ -1,0 +1,30 @@
+.page{
+  max-width:600px;
+  margin:auto;
+  padding:40px;
+}
+
+.form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+input,textarea{
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+button{
+  padding:12px;
+  background:#e50914;
+  color:white;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#c40812;
+}

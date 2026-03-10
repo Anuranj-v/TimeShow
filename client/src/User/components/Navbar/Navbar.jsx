@@ -66,7 +66,8 @@ const Navbar = () => {
                 <Link to="/User" className={styles.link}>Home</Link>
                 <Link to="/User/MovieListing" className={styles.link}>Movies</Link>
                 <Link to="/User/TheatreView" className={styles.link}>Theatres</Link>
-                <Link to="/User/MovieDetails" className={styles.link}>Releases</Link>
+                <Link to="/User/ComingSoon" className={styles.link}>Releases</Link>
+
             </div>
 
 

@@ -29,7 +29,7 @@ const Navbar = () => {
 
 
             <div className={styles.menu}>
-                <Link to="/" className={styles.link}>Home</Link>
+                <Link to="/Guest/" className={styles.link}>Home</Link>
                 <Link to="/Guest/MovieListing" className={styles.link}>Movies</Link>
                 <Link to="/Guest/TheatreView" className={styles.link}>Theatres</Link>
                 <Link to="/Guest/MovieDetails" className={styles.link}>Releases</Link>

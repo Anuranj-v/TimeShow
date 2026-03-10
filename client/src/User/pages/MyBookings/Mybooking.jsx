@@ -100,53 +100,77 @@ const MyBookings = () => {
     };
 
 
-    const handleRepayment = async (booking) => {
-        setPayingId(booking.id);
+    // const handleRepayment = async (booking) => {
+    //     setPayingId(booking.id);
+
+    //     try {
+
+    //         const orderRes = await axios.post("http://127.0.0.1:8000/CreateOrder/", {
+    //             booking_id: booking.id,
+    //             amount: booking.booking_amount,
+    //             user_id: userId,
+    //         });
+
+    //         const { order_id, amount, currency, key } = orderRes.data;
+
+    //         const options = {
+    //             key,
+    //             amount,
+    //             currency,
+    //             name: "TicketStore",
+    //             description: `Booking #${booking.id} — ${booking.movie_title}`,
+    //             order_id,
+    //             handler: async (response) => {
+
+    //                 await axios.post("http://127.0.0.1:8000/VerifyPayment/", {
+    //                     booking_id: booking.id,
+    //                     razorpay_payment_id: response.razorpay_payment_id,
+    //                     razorpay_order_id: response.razorpay_order_id,
+    //                     razorpay_signature: response.razorpay_signature,
+    //                 });
+
+    //                 alert("Payment successful! Your booking is confirmed.");
+
+    //                 const updated = await axios.get(`http://127.0.0.1:8000/MyBookings/${userId}/`);
+    //                 setBookings(updated.data.data);
+
+    //             },
+    //             theme: { color: "#e83030" },
+    //             modal: { ondismiss: () => setPayingId(null) },
+    //         };
+
+    //         const rzp = new window.Razorpay(options);
+    //         rzp.open();
+
+    //     } catch (err) {
+
+    //         console.error("Payment initiation failed:", err);
+    //         alert("Could not initiate payment. Please try again.");
+    //         setPayingId(null);
+
+    //     }
+    // };
+    const cancelBooking = async (bookingId) => {
+
+        const confirmCancel = window.confirm("Are you sure you want to cancel this booking?");
+        if (!confirmCancel) return;
 
         try {
 
-            const orderRes = await axios.post("http://127.0.0.1:8000/CreateOrder/", {
-                booking_id: booking.id,
-                amount: booking.booking_amount,
-                user_id: userId,
+            await axios.post("http://127.0.0.1:8000/CancelBooking/", {
+                booking_id: bookingId
             });
 
-            const { order_id, amount, currency, key } = orderRes.data;
+            alert("Booking cancelled successfully");
 
-            const options = {
-                key,
-                amount,
-                currency,
-                name: "TicketStore",
-                description: `Booking #${booking.id} — ${booking.movie_title}`,
-                order_id,
-                handler: async (response) => {
-
-                    await axios.post("http://127.0.0.1:8000/VerifyPayment/", {
-                        booking_id: booking.id,
-                        razorpay_payment_id: response.razorpay_payment_id,
-                        razorpay_order_id: response.razorpay_order_id,
-                        razorpay_signature: response.razorpay_signature,
-                    });
-
-                    alert("Payment successful! Your booking is confirmed.");
-
-                    const updated = await axios.get(`http://127.0.0.1:8000/MyBookings/${userId}/`);
-                    setBookings(updated.data.data);
-
-                },
-                theme: { color: "#e83030" },
-                modal: { ondismiss: () => setPayingId(null) },
-            };
-
-            const rzp = new window.Razorpay(options);
-            rzp.open();
+            // refresh bookings
+            const updated = await axios.get(`http://127.0.0.1:8000/MyBookings/${userId}/`);
+            setBookings(updated.data.data);
 
         } catch (err) {
 
-            console.error("Payment initiation failed:", err);
-            alert("Could not initiate payment. Please try again.");
-            setPayingId(null);
+            console.error(err);
+            alert("Failed to cancel booking");
 
         }
     };
@@ -230,11 +254,20 @@ const MyBookings = () => {
                                     )}
 
                                     {d.booking_status === 1 && (
-                                        <Link to={`/ticket/${d.id}`}>
-                                            <button className={styles.ticketBtn}>
-                                                VIEW TICKET ↗
+                                        <>
+                                            <Link to={`/ticket/${d.id}`}>
+                                                <button className={styles.ticketBtn}>
+                                                    VIEW TICKET ↗
+                                                </button>
+                                            </Link>
+
+                                            <button
+                                                className={styles.cancelBtn}
+                                                onClick={() => cancelBooking(d.id)}
+                                            >
+                                                CANCEL BOOKING
                                             </button>
-                                        </Link>
+                                        </>
                                     )}
 
                                 </div>

@@ -130,4 +130,10 @@ class tbl_feedback(models.Model):
     feedback_content = models.TextField()
     feedback_date = models.DateField(auto_now_add=True)    
 
-
+class tbl_upcomingmovies(models.Model):
+    upmovie_title = models.CharField(max_length=100)
+    upmovie_description = models.TextField()
+    upmovie_genre = models.CharField(max_length=50)
+    upmovie_release_date = models.DateField()
+    upmovie_trailer = models.CharField(max_length=255)
+    upmovie_poster = models.FileField(upload_to='upcoming/poster/')

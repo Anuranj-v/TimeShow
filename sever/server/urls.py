@@ -82,6 +82,8 @@ urlpatterns = [
     path("city-theatres/<int:user_id>/", views.CityTheatres),   
     path("theatrebymovies/<int:theatre_id>/", views.TheatrebyMovies),
     path("search/<str:key>/", views.Search),
+    path('CancelBooking/', views.CancelBooking),
+    path('UpcomingMovies/', views.UpcomingMovies),
     ]
     
 if settings.DEBUG:

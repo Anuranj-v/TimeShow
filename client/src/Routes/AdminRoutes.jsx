@@ -10,12 +10,13 @@ import ScreenType from '../Admin/pages/Screen/ScreenType'
 import SeatType from '../Admin/pages/SeatType/SeatType'
 import AdminDashboard from '../Admin/pages/AdminDashboard/AdminDashboard'
 import Verification from '../Admin/pages/Verification/Verification'
+import UpcomingMovies from '../Admin/pages/UpcomingMovies/UpcomingMovies'
 
 const AdminRoutes = () => {
     return (
         <Routes>
 
-            <Route path="AdminDashboard" element={<AdminDashboard />} />
+            <Route path="/" element={<AdminDashboard />} />
             <Route path="Movies" element={<Movie />} />
             <Route path="District" element={<District />} />
             <Route path="Genres" element={<Genres />} />
@@ -25,6 +26,7 @@ const AdminRoutes = () => {
             <Route path="ScreenType" element={<ScreenType />} />
             <Route path="SeatType" element={<SeatType />} />
             <Route path="Verification" element={<Verification />} />
+            <Route path="UpcomingMovies" element={<UpcomingMovies />} />
 
         </Routes>
     )

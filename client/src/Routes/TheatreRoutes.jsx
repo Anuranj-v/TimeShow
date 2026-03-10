@@ -12,7 +12,7 @@ import TheatreDashboard from '../Theatre/pages/TheatreDashboard/TheatreDashboard
 const TheatreRoutes = () => {
     return (
         <Routes>
-            <Route path="TheatreDashboard" element={<TheatreDashboard />} />
+            <Route path="/" element={<TheatreDashboard />} />
             <Route path="AddShows" element={<AddShows />} />
             <Route path="Shows" element={<Shows />} />
             <Route path="ViewBookings" element={<ViewBookings />} />

@@ -340,7 +340,7 @@ def Movie(request):
             # -------- HOT (many reviews) --------
             reviews = tbl_review.objects.filter(movie_id=m).count()
 
-            if reviews >= 3:
+            if reviews >= 4:
                 badge = "Hot"
 
             data.append({
@@ -559,7 +559,7 @@ def SeatBooking(request):
             booking_id__movie_id=booking.movie_id,
             booking_id__booking_time=booking.booking_time,
             booking_id__booking_todate=booking.booking_todate,
-            booking_id__booking_status__in=[0, 1],   # created or paid
+            booking_id__booking_status__in=[ 1],   # created or paid
         ).exists()
 
         if exists:
@@ -1558,3 +1558,85 @@ def Search(request, key):
         "status": True,
         "data": data
     })
+
+
+@csrf_exempt
+def CancelBooking(request):
+
+    if request.method == "POST":
+
+        data = json.loads(request.body)
+        booking_id = data.get("booking_id")
+
+        try:
+
+            booking = tbl_booking.objects.get(id=booking_id)
+
+            # already cancelled
+            if booking.booking_status == 2:
+                return JsonResponse({
+                    "msg": "Booking already cancelled"
+                }, status=400)
+
+            # change booking status
+            booking.booking_status = 2
+            booking.save()
+
+            # delete seat bookings (release seats)
+            tbl_seatbooking.objects.filter(
+                booking_id=booking
+            ).delete()
+
+            return JsonResponse({
+                "msg": "Booking cancelled successfully"
+            })
+
+        except tbl_booking.DoesNotExist:
+
+            return JsonResponse({
+                "msg": "Booking not found"
+            }, status=404)
+        
+
+
+@csrf_exempt
+def UpcomingMovies(request):
+
+    # ADD UPCOMING MOVIE
+    if request.method == "POST":
+
+        tbl_upcomingmovies.objects.create(
+
+            upmovie_title=request.POST['upmovie_title'],
+            upmovie_description=request.POST['upmovie_description'],
+            upmovie_genre=request.POST['upmovie_genre'],
+            upmovie_release_date=request.POST['upmovie_release_date'],
+            upmovie_trailer=request.POST['upmovie_trailer'],
+            upmovie_poster=request.FILES.get('upmovie_poster')
+
+        )
+
+        return JsonResponse({
+            "msg": "Upcoming Movie Added Successfully"
+        })
+
+    # VIEW UPCOMING MOVIES
+    else:
+
+        movies = tbl_upcomingmovies.objects.all()
+
+        data = []
+
+        for m in movies:
+
+            data.append({
+                "id": m.id,
+                "title": m.upmovie_title,
+                "description": m.upmovie_description,
+                "genre": m.upmovie_genre,
+                "release_date": m.upmovie_release_date,
+                "trailer": m.upmovie_trailer,
+                "poster": m.upmovie_poster.url if m.upmovie_poster else ""
+            })
+
+        return JsonResponse({"data": data})
