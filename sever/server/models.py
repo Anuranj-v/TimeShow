@@ -25,7 +25,7 @@ class tbl_theater(models.Model):
     theater_password = models.CharField(max_length=128)
     city_id = models.ForeignKey(tbl_city, on_delete=models.CASCADE)
     theater_status = models.IntegerField(default=0, null=True)  # 0 for pending, 1 for approved, 2 for rejected
-
+    theater_date = models.DateField(auto_now_add=True)
 
 class tbl_user(models.Model):
     user_name = models.CharField(max_length=50)
@@ -105,8 +105,6 @@ class tbl_complaint(models.Model):
     user_id = models.ForeignKey(tbl_user, on_delete=models.CASCADE)
     complaint_title = models.CharField(max_length=100)
     complaint_content = models.TextField()
-    complaint_reply = models.TextField(blank=True)
-    theater_id = models.ForeignKey(tbl_theater, on_delete=models.CASCADE)
     complaint_date = models.DateField(auto_now_add=True)
 
 class tbl_screenseat(models.Model):

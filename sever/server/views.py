@@ -1330,29 +1330,29 @@ def TheatreDashboard(request):
 
 
 @csrf_exempt
-def AdminUserTheatreList(request):
+def AdminUsersTheatres(request):
 
-    users = tbl_user.objects.select_related('city_id').values(
-        "id",
-        "user_name",
-        "user_email",
-        "user_contact",
-        city=F("city_id__city_name")
-    )
+    from_date = request.GET.get("from")
+    to_date = request.GET.get("to")
 
-    theatres = tbl_theater.objects.select_related('city_id').values(
-        "id",
-        "theater_name",
-        "theater_email",
-        "theater_contact",
-        "theater_status",   # ⭐ IMPORTANT
-        city=F("city_id__city_name")
-    )
+    theatres = tbl_theater.objects.all()
 
-    return JsonResponse({
-        "users": list(users),
-        "theatres": list(theatres)
-    })
+    if from_date and to_date:
+        theatres = theatres.filter(theater_date__range=[from_date, to_date])
+
+    theatre_list = []
+
+    for t in theatres:
+        theatre_list.append({
+            "id": t.id,
+            "theater_name": t.theater_name,
+            "theater_email": t.theater_email,
+            "theater_contact": t.theater_contact,
+            "city": t.city_id.city_name,
+            "theater_status": t.theater_status
+        })
+
+    return JsonResponse({"theatres": theatre_list})
 
 @csrf_exempt
 def BookingList(request):
@@ -1638,5 +1638,34 @@ def UpcomingMovies(request):
                 "trailer": m.upmovie_trailer,
                 "poster": m.upmovie_poster.url if m.upmovie_poster else ""
             })
+
+        return JsonResponse({"data": data})
+    
+@csrf_exempt
+def Complaint(request):
+
+    if request.method == "POST":
+
+        tbl_complaint.objects.create(
+
+            user_id = tbl_user.objects.get(id=request.POST['user_id']),
+            complaint_title = request.POST['complaint_title'],
+            complaint_content = request.POST['complaint_content']
+
+        )
+
+        return JsonResponse({
+            "msg": "Complaint Submitted Successfully"
+        })
+
+    else:
+
+        data = list(tbl_complaint.objects.values(
+            'id',
+            'complaint_title',
+            'complaint_content',
+            'complaint_date',
+            user_name = F('user_id__user_name')
+        ))
 
         return JsonResponse({"data": data})

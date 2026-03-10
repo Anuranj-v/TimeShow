@@ -58,7 +58,7 @@ const MoviePage = () => {
                             <button
                                 className={styles.bookBtn}
                                 onClick={() =>
-                                    navigate(`/User/DateTime/${theatreId}/${movie.movie_id}`)
+                                    navigate(`/Guest/DateTime/${theatreId}/${movie.movie_id}`)
                                 }
                             >
                                 Book Now

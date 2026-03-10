@@ -1,6 +1,6 @@
 import React from 'react'
 import GuestRoutes from '../../Routes/GuestRoutes'
-import Footer from '../../User/components/Footer/Footer'
+import Footer from '../../Guest/components/Footer/Footer'
 import Styles from './GuestLayout.module.css'
 import Navbar from '../components/Navbar/Navbar'
 

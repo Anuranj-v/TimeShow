@@ -1,30 +1,249 @@
-.page{
-  max-width:600px;
-  margin:auto;
-  padding:40px;
+/* ── PAGE ── */
+.page {
+    padding: 40px 48px 60px;
+    min-height: 100vh;
+    color: #f5f0f0;
+    font-family: 'Outfit', sans-serif;
+    max-width: 900px;
 }
 
-.form{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
+/* ── HEADER ── */
+.pageHeader {
+    margin-bottom: 32px;
 }
 
-input,textarea{
-  padding:10px;
-  border-radius:6px;
-  border:1px solid #ccc;
+.eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #e83030;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.eyebrow::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: #e83030;
 }
 
-button{
-  padding:12px;
-  background:#e50914;
-  color:white;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
+.pageTitle {
+    font-family: 'Georgia', serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #f5f0f0;
+    margin-bottom: 4px;
 }
 
-button:hover{
-  background:#c40812;
+.pageSub {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(245, 240, 240, 0.4);
+}
+
+/* ── FORM CARD ── */
+.formCard {
+    background: rgba(18, 3, 3, 0.55);
+    border: 1px solid rgba(220, 25, 25, 0.16);
+    border-radius: 16px;
+    backdrop-filter: blur(24px) saturate(1.7);
+    -webkit-backdrop-filter: blur(24px) saturate(1.7);
+    padding: 32px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ── TWO-COL GRID ── */
+.topGrid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+/* ── POSTER UPLOAD ── */
+.posterUpload {
+    display: block;
+    width: 180px;
+    height: 260px;
+    border-radius: 10px;
+    border: 2px dashed rgba(220, 25, 25, 0.3);
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.2s, background 0.2s;
+    flex-shrink: 0;
+}
+.posterUpload:hover {
+    border-color: rgba(232, 48, 48, 0.6);
+    background: rgba(232, 48, 48, 0.04);
+}
+
+.posterPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+}
+
+.uploadIcon  { font-size: 32px; }
+.uploadText  { font-size: 13px; font-weight: 600; color: rgba(245, 240, 240, 0.7); }
+.uploadHint  {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(245, 240, 240, 0.3);
+}
+
+.posterPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hiddenInput { display: none; }
+
+/* ── RIGHT FIELDS ── */
+.rightFields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── FIELD GROUP ── */
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 240, 0.4);
+}
+
+/* ── INPUTS ── */
+.input {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(220, 25, 25, 0.2);
+    border-radius: 8px;
+    color: #f5f0f0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    padding: 11px 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    color-scheme: dark;
+}
+.input::placeholder { color: rgba(245, 240, 240, 0.22); }
+.input:focus {
+    border-color: rgba(232, 48, 48, 0.55);
+    box-shadow: 0 0 0 3px rgba(232, 48, 48, 0.1);
+}
+
+/* ── TEXTAREA ── */
+.textarea {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(220, 25, 25, 0.2);
+    border-radius: 8px;
+    color: #f5f0f0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    padding: 11px 16px;
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    line-height: 1.6;
+}
+.textarea::placeholder { color: rgba(245, 240, 240, 0.22); }
+.textarea:focus {
+    border-color: rgba(232, 48, 48, 0.55);
+    box-shadow: 0 0 0 3px rgba(232, 48, 48, 0.1);
+}
+
+/* ── FOOTER ── */
+.formFooter {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+    border-top: 1px solid rgba(220, 25, 25, 0.1);
+}
+
+/* ── SUBMIT BUTTON ── */
+.submitBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #c01010, #e83030);
+    border: none;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 13px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 18px rgba(232, 48, 48, 0.32);
+}
+.submitBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(232, 48, 48, 0.5);
+}
+.submitBtn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── SPINNER ── */
+.spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .page { padding: 30px 24px 40px; }
+    .formCard { padding: 24px 20px; }
+    .topGrid {
+        grid-template-columns: 1fr;
+    }
+    .posterUpload {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page { padding: 24px 16px 40px; }
+    .formFooter { justify-content: stretch; }
+    .submitBtn { width: 100%; justify-content: center; }
 }

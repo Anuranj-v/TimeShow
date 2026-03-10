@@ -74,7 +74,7 @@ urlpatterns = [
     path("movie-reviews/<int:movie_id>/", views.MovieReviews),
     path('AdminDashboard/', views.AdminDashboard),
     path('TheatreDashboard/', views.TheatreDashboard),
-    path('AdminUsersTheatres/', views.AdminUserTheatreList),
+    path('AdminUsersTheatres/', views.AdminUsersTheatres),
     path('BookingList/', views.BookingList),
     path('PendingTheatres/', views.PendingTheatres),
     path('ApproveTheatre/<int:tid>/', views.ApproveTheatre),
@@ -84,6 +84,7 @@ urlpatterns = [
     path("search/<str:key>/", views.Search),
     path('CancelBooking/', views.CancelBooking),
     path('UpcomingMovies/', views.UpcomingMovies),
+    path('Complaint/', views.Complaint),
     ]
     
 if settings.DEBUG:

@@ -14,6 +14,13 @@ const MyBookings = () => {
 
     // countdown timer state
     const [timers, setTimers] = useState({});
+    const canCancel = (date, time) => {
+
+        const showDateTime = new Date(`${date}T${time}`);
+        const cancelLimit = new Date(showDateTime.getTime() - 60 * 60 * 1000);
+
+        return new Date() < cancelLimit;
+    };
 
     useEffect(() => {
 
@@ -261,12 +268,22 @@ const MyBookings = () => {
                                                 </button>
                                             </Link>
 
-                                            <button
-                                                className={styles.cancelBtn}
-                                                onClick={() => cancelBooking(d.id)}
-                                            >
-                                                CANCEL BOOKING
-                                            </button>
+                                            {d.booking_status === 1 && canCancel(d.booking_todate, d.booking_time) ? (
+
+                                                <button
+                                                    className={styles.cancelBtn}
+                                                    onClick={() => cancelBooking(d.id)}
+                                                >
+                                                    CANCEL BOOKING
+                                                </button>
+
+                                            ) : (
+
+                                                <span style={{ color: "gray", fontSize: "13px" }}>
+                                                    Cancellation Closed
+                                                </span>
+
+                                            )}
                                         </>
                                     )}
 

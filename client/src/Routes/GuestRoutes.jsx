@@ -10,6 +10,8 @@ import MovieListing from '../Guest/pages/MovieListing/MovieListing'
 import MovieDetails from '../Guest/pages/MovieDetails/MovieDetails'
 import DateTime from '../Guest/pages/DateTime/DateTime'
 import HeroBanner from '../Guest/pages/GuestDashboard/UserDashboard'
+import ComingSoon from '../User/pages/Comingsoon/Comingsoon'
+import ContactUs from '../Guest/pages/ContactUs/ContactUs'
 const GuestRoutes = () => {
     return (
         <Routes>
@@ -23,6 +25,8 @@ const GuestRoutes = () => {
             <Route path="/MovieListing" element={<MovieListing />} />
             <Route path="/movie/:id" element={<MovieDetails />} />
             <Route path="/DateTime/:theaterId/:movieId" element={<DateTime />} />
+            <Route path="/ComingSoon" element={<ComingSoon />} />
+            <Route path="/ContactUs" element={<ContactUs />} />
         </Routes>
     )
 }

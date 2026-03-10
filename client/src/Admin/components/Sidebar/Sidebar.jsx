@@ -21,9 +21,10 @@ const NAV_ITEMS = [
     { to: "/admin/Movies", icon: <MovieIcon />, label: "Movies" },
     { to: "/admin/ScreenType", icon: <WeekendIcon />, label: "Screen Type" },
     { to: "/admin/SeatType", icon: <ChairIcon />, label: "Seat Type" },
-    { to: "/admin/ListBookings", icon: <ReceiptLongIcon />, label: "Reports" },
+    { to: "/admin/Reports", icon: <ReceiptLongIcon />, label: "Reports" },
     { to: "/admin/Verification", icon: <AddReactionIcon />, label: "Verification" },
     { to: "/admin/UpcomingMovies", icon: <AddReactionIcon />, label: "Upcoming Movies" },
+    { to: "/admin/Complaints", icon: <AddReactionIcon />, label: "Complaints" },
 ];
 
 const Sidebar = () => {

@@ -14,6 +14,8 @@ import DateTime from '../User/pages/DateTime/DateTime';
 import UserDashboard from '../User/pages/UserDashboard/UserDashboard';
 import MoviePage from '../User/pages/moviePage/MoviePage';
 import ComingSoon from '../User/pages/Comingsoon/Comingsoon';
+import ContactUs from '../User/pages/ContactUs/ContactUs';
+
 
 const UserRoutes = () => {
     return (
@@ -30,6 +32,7 @@ const UserRoutes = () => {
             <Route path="/mybookings" element={<MyBookings />} />
             <Route path="/DateTime/:theaterId/:movieId" element={<DateTime />} />
             <Route path="/ComingSoon" element={<ComingSoon />} />
+            <Route path="/ContactUs" element={<ContactUs />} />
         </Routes>
     );
 };

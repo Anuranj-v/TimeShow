@@ -1,0 +1,90 @@
+.page {
+  /* margin-Top: 40px; */
+  padding: 40px;
+  background: #0b0004;
+  min-height: 100vh;
+  color: white;
+}
+
+.title {
+  margin-Top: 45px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 40px;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* CONTACT INFO */
+
+.infoCard {
+  background: #160006;
+  padding: 30px;
+  border-radius: 10px;
+  width: 350px;
+  box-shadow: 0px 0px 10px rgba(255,0,70,0.2);
+}
+
+.infoBox {
+  background: #2a000c;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+
+.infoBox h4 {
+  margin-bottom: 5px;
+}
+
+/* FORM */
+
+.formCard {
+  background: #160006;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0px 0px 10px rgba(255,0,70,0.2);
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 6px;
+  border: none;
+  background: #2a000c;
+  color: white;
+}
+
+.textarea {
+  width: 100%;
+  height: 120px;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 6px;
+  border: none;
+  background: #2a000c;
+  color: white;
+}
+
+.button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(45deg,#ff2a5f,#ff0044);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:hover {
+  opacity: 0.9;
+}

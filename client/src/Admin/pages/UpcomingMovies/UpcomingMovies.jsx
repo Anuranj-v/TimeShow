@@ -13,24 +13,24 @@ const UpcomingMovie = () => {
     });
 
     const [poster, setPoster] = useState(null);
+    const [posterPreview, setPosterPreview] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
-        setMovie({
-            ...movie,
-            [e.target.name]: e.target.value
-        });
+        setMovie({ ...movie, [e.target.name]: e.target.value });
     };
 
     const handlePoster = (e) => {
-        setPoster(e.target.files[0]);
+        const file = e.target.files[0];
+        setPoster(file);
+        if (file) setPosterPreview(URL.createObjectURL(file));
     };
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
+        setLoading(true);
 
         const formData = new FormData();
-
         formData.append("upmovie_title", movie.title);
         formData.append("upmovie_genre", movie.genre);
         formData.append("upmovie_release_date", movie.release_date);
@@ -39,100 +39,148 @@ const UpcomingMovie = () => {
         formData.append("upmovie_poster", poster);
 
         try {
-
-            await axios.post(
-                "http://127.0.0.1:8000/UpcomingMovies/",
-                formData
-            );
-
+            await axios.post("http://127.0.0.1:8000/UpcomingMovies/", formData);
             alert("Upcoming movie added successfully");
-
-            setMovie({
-                title: "",
-                genre: "",
-                release_date: "",
-                description: "",
-                trailer: ""
-            });
-
+            setMovie({ title: "", genre: "", release_date: "", description: "", trailer: "" });
             setPoster(null);
-
+            setPosterPreview(null);
         } catch (error) {
-
             console.error(error);
             alert("Error adding movie");
-
+        } finally {
+            setLoading(false);
         }
-
     };
 
     return (
-
         <div className={styles.page}>
 
-            <h2>Add Upcoming Movie</h2>
+            {/* ── HEADER ── */}
+            <div className={styles.pageHeader}>
+                <div className={styles.eyebrow}>Admin Panel</div>
+                <h1 className={styles.pageTitle}>Add Upcoming Movie</h1>
+                <p className={styles.pageSub}>Schedule a new film for the Coming Soon section</p>
+            </div>
 
-            <form className={styles.form} onSubmit={handleSubmit}>
+            {/* ── FORM CARD ── */}
+            <div className={styles.formCard}>
+                <form className={styles.form} onSubmit={handleSubmit}>
 
-                <input
-                    type="text"
-                    name="title"
-                    placeholder="Movie Title"
-                    value={movie.title}
-                    onChange={handleChange}
-                    required
-                />
+                    {/* TWO-COL: poster upload + right fields */}
+                    <div className={styles.topGrid}>
 
-                <input
-                    type="text"
-                    name="genre"
-                    placeholder="Genre"
-                    value={movie.genre}
-                    onChange={handleChange}
-                    required
-                />
+                        {/* POSTER UPLOAD */}
+                        <label className={styles.posterUpload} htmlFor="posterInput">
+                            {posterPreview ? (
+                                <img src={posterPreview} alt="Poster preview" className={styles.posterPreview} />
+                            ) : (
+                                <div className={styles.posterPlaceholder}>
+                                    <span className={styles.uploadIcon}>🎬</span>
+                                    <span className={styles.uploadText}>Upload Poster</span>
+                                    <span className={styles.uploadHint}>Click to browse</span>
+                                </div>
+                            )}
+                            <input
+                                id="posterInput"
+                                type="file"
+                                accept="image/*"
+                                onChange={handlePoster}
+                                required
+                                className={styles.hiddenInput}
+                            />
+                        </label>
 
-                <input
-                    type="date"
-                    name="release_date"
-                    value={movie.release_date}
-                    onChange={handleChange}
-                    required
-                />
+                        {/* RIGHT FIELDS */}
+                        <div className={styles.rightFields}>
 
-                <textarea
-                    name="description"
-                    placeholder="Movie Description"
-                    value={movie.description}
-                    onChange={handleChange}
-                    required
-                />
+                            <div className={styles.fieldGroup}>
+                                <label className={styles.label}>Movie Title</label>
+                                <input
+                                    className={styles.input}
+                                    type="text"
+                                    name="title"
+                                    placeholder="e.g. Thunderbolts*"
+                                    value={movie.title}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-                <input
-                    type="text"
-                    name="trailer"
-                    placeholder="Trailer URL (YouTube)"
-                    value={movie.trailer}
-                    onChange={handleChange}
-                    required
-                />
+                            <div className={styles.fieldGroup}>
+                                <label className={styles.label}>Genre</label>
+                                <input
+                                    className={styles.input}
+                                    type="text"
+                                    name="genre"
+                                    placeholder="e.g. Action · Sci-Fi"
+                                    value={movie.genre}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-                <input
-                    type="file"
-                    onChange={handlePoster}
-                    required
-                />
+                            <div className={styles.fieldGroup}>
+                                <label className={styles.label}>Release Date</label>
+                                <input
+                                    className={styles.input}
+                                    type="date"
+                                    name="release_date"
+                                    value={movie.release_date}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-                <button type="submit">
-                    Add Upcoming Movie
-                </button>
+                            <div className={styles.fieldGroup}>
+                                <label className={styles.label}>Trailer URL</label>
+                                <input
+                                    className={styles.input}
+                                    type="text"
+                                    name="trailer"
+                                    placeholder="https://youtube.com/watch?v=..."
+                                    value={movie.trailer}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
 
-            </form>
+                        </div>
+                    </div>
+
+                    {/* DESCRIPTION — full width */}
+                    <div className={styles.fieldGroup}>
+                        <label className={styles.label}>Description</label>
+                        <textarea
+                            className={styles.textarea}
+                            name="description"
+                            placeholder="Write a short synopsis of the movie..."
+                            value={movie.description}
+                            onChange={handleChange}
+                            required
+                            rows={4}
+                        />
+                    </div>
+
+                    {/* SUBMIT */}
+                    <div className={styles.formFooter}>
+                        <button
+                            type="submit"
+                            className={styles.submitBtn}
+                            disabled={loading}
+                        >
+                            {loading ? (
+                                <><span className={styles.spinner} /> Adding Movie…</>
+                            ) : (
+                                "+ Add Upcoming Movie"
+                            )}
+                        </button>
+                    </div>
+
+                </form>
+            </div>
 
         </div>
-
     );
-
 };
 
 export default UpcomingMovie;
