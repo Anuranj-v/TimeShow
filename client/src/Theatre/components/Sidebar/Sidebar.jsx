@@ -17,7 +17,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 const NAV_ITEMS = [
     { to: '/Theatre/', label: 'Dashboard', Icon: DashboardIcon, sub: 'Overview' },
-    // { to: '/Theatre/Shows', label: 'Shows', Icon: SlowMotionVideoIcon, sub: 'Schedule' },
+
     { to: '/Theatre/Screen', label: 'Screen', Icon: TvIcon, sub: 'Auditoriums' },
     { to: '/Theatre/AddSeater', label: 'Add Seater', Icon: EventSeatIcon, sub: 'Configure' },
     { to: '/Theatre/AddShows', label: 'Add Shows', Icon: AddCircleOutlineIcon, sub: 'Programme' },

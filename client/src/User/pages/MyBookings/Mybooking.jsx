@@ -16,10 +16,13 @@ const MyBookings = () => {
     const [timers, setTimers] = useState({});
     const canCancel = (date, time) => {
 
-        const showDateTime = new Date(`${date}T${time}`);
-        const cancelLimit = new Date(showDateTime.getTime() - 60 * 60 * 1000);
+        const show = new Date(date + "T" + time);
+        const now = new Date();
 
-        return new Date() < cancelLimit;
+        const diff = show.getTime() - now.getTime();
+
+        return diff > 10 * 60 * 60 * 1000;
+
     };
 
     useEffect(() => {
@@ -107,56 +110,7 @@ const MyBookings = () => {
     };
 
 
-    // const handleRepayment = async (booking) => {
-    //     setPayingId(booking.id);
 
-    //     try {
-
-    //         const orderRes = await axios.post("http://127.0.0.1:8000/CreateOrder/", {
-    //             booking_id: booking.id,
-    //             amount: booking.booking_amount,
-    //             user_id: userId,
-    //         });
-
-    //         const { order_id, amount, currency, key } = orderRes.data;
-
-    //         const options = {
-    //             key,
-    //             amount,
-    //             currency,
-    //             name: "TicketStore",
-    //             description: `Booking #${booking.id} — ${booking.movie_title}`,
-    //             order_id,
-    //             handler: async (response) => {
-
-    //                 await axios.post("http://127.0.0.1:8000/VerifyPayment/", {
-    //                     booking_id: booking.id,
-    //                     razorpay_payment_id: response.razorpay_payment_id,
-    //                     razorpay_order_id: response.razorpay_order_id,
-    //                     razorpay_signature: response.razorpay_signature,
-    //                 });
-
-    //                 alert("Payment successful! Your booking is confirmed.");
-
-    //                 const updated = await axios.get(`http://127.0.0.1:8000/MyBookings/${userId}/`);
-    //                 setBookings(updated.data.data);
-
-    //             },
-    //             theme: { color: "#e83030" },
-    //             modal: { ondismiss: () => setPayingId(null) },
-    //         };
-
-    //         const rzp = new window.Razorpay(options);
-    //         rzp.open();
-
-    //     } catch (err) {
-
-    //         console.error("Payment initiation failed:", err);
-    //         alert("Could not initiate payment. Please try again.");
-    //         setPayingId(null);
-
-    //     }
-    // };
     const cancelBooking = async (bookingId) => {
 
         const confirmCancel = window.confirm("Are you sure you want to cancel this booking?");
@@ -217,6 +171,10 @@ const MyBookings = () => {
                                 <span>{d.booking_time}</span>
                                 <span>{d.seats?.join(", ")}</span>
                                 <span>{d.theater_name || "Cinema Hall"}</span>
+
+                                <span>
+                                    Booked At: {new Date(d.created_at).toLocaleString()}
+                                </span>
                             </div>
 
 
@@ -248,16 +206,8 @@ const MyBookings = () => {
 
                                 <div className={styles.actionBtns}>
 
-                                    {d.booking_status === 0 && timers[d.id] > 0 && (
-                                        <button
-                                            className={styles.repayBtn}
-                                            onClick={() => handleRepayment(d)}
-                                            disabled={payingId === d.id}
-                                        >
-                                            {payingId === d.id
-                                                ? "⏳ Processing…"
-                                                : "💳 PAY NOW"}
-                                        </button>
+                                    {d.booking_status === 0 && (
+                                        <span style={{ color: "orange" }}>Payment Pending</span>
                                     )}
 
                                     {d.booking_status === 1 && (

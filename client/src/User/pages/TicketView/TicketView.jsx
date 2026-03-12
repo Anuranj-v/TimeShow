@@ -16,7 +16,11 @@ const TicketView = () => {
     useEffect(() => {
         axios
             .get(`${BASE_URL}/booking-details/${bookingId}/`)
-            .then((res) => { setTicket(res.data); setLoading(false); })
+            .then((res) => {
+                console.log(res.data);
+
+                setTicket(res.data); setLoading(false);
+            })
             .catch((err) => { console.error(err); setLoading(false); });
     }, [bookingId]);
 

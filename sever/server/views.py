@@ -979,22 +979,27 @@ THE TIME SHOW
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 
+
+
 @csrf_exempt
 def booking_details(request, booking_id):
 
     try:
         booking = tbl_booking.objects.get(id=booking_id)
 
-        seats = tbl_seatbooking.objects.filter(
-            booking_id=booking
-        ).values_list('seatbooking_number', flat=True)
+        # get seat bookings
+        seat_bookings = tbl_seatbooking.objects.filter(booking_id=booking)
 
-        show = tbl_shows.objects.filter(
-            movie_id=booking.movie_id
-        ).first()
+        seats = seat_bookings.values_list('seatbooking_number', flat=True)
 
-        screen = show.screen_id if show else None
-        theater = screen.theater_id if screen else None
+        # get screen from seat layout
+        screen = None
+        theater = None
+
+        if seat_bookings.exists():
+            layout = seat_bookings.first().screenseat_id
+            screen = layout.screen_id
+            theater = screen.theater_id
 
         return JsonResponse({
             "booking_id": booking.id,
@@ -1012,24 +1017,24 @@ def booking_details(request, booking_id):
     except tbl_booking.DoesNotExist:
         return JsonResponse({"msg": "Booking not found"}, status=404)
 
-
 @csrf_exempt
 
 def MyBookings(request, user_id):
 
     bookings = tbl_booking.objects.filter(
-        user_id=user_id,
-        booking_status=1
-    ).values(
-        'id',
-        'movie_id',
-        'booking_amount',
-        'booking_todate',
-        'booking_time',
-        'booking_status',
-        movie_title=F('movie_id__movie_title'),
-        movie_poster=F('movie_id__movie_poster')
-    )
+    user_id=user_id,
+    booking_status=1
+).values(
+    'id',
+    'movie_id',
+    'booking_amount',
+    'booking_todate',
+    'booking_time',
+    'booking_status',
+    'created_at',   # ⭐ ADD THIS
+    movie_title=F('movie_id__movie_title'),
+    movie_poster=F('movie_id__movie_poster')
+)
 
     data = list(bookings)
 

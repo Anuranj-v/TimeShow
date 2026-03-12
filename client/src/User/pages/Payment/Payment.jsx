@@ -18,43 +18,43 @@ const Payment = () => {
 
 
 
-  useEffect(() => {
+    useEffect(() => {
 
-    const handleBeforeUnload = (e) => {
-        e.preventDefault();
-        e.returnValue = "";
-    };
+        const handleBeforeUnload = (e) => {
+            e.preventDefault();
+            e.returnValue = "";
+        };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
+        window.addEventListener("beforeunload", handleBeforeUnload);
 
-    return () => {
-        window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
 
-}, []);
+    }, []);
 
-useEffect(() => {
+    useEffect(() => {
 
-    const handlePopState = () => {
+        const handlePopState = () => {
 
-        const confirmLeave = window.confirm(
-            "Are you sure you want to go back? Selected seats will be discarded."
-        );
+            const confirmLeave = window.confirm(
+                "Are you sure you want to go back? Selected seats will be discarded."
+            );
 
-        if (!confirmLeave) {
-            window.history.pushState(null, "", window.location.href);
-        }
+            if (!confirmLeave) {
+                window.history.pushState(null, "", window.location.href);
+            }
 
-    };
+        };
 
-    window.history.pushState(null, "", window.location.href);
-    window.addEventListener("popstate", handlePopState);
+        window.history.pushState(null, "", window.location.href);
+        window.addEventListener("popstate", handlePopState);
 
-    return () => {
-        window.removeEventListener("popstate", handlePopState);
-    };
+        return () => {
+            window.removeEventListener("popstate", handlePopState);
+        };
 
-}, []);
+    }, []);
 
 
     // -------- FORMAT CARD NUMBER --------
