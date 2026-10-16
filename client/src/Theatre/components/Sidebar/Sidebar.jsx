@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './sidebar.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../../assets/Logo/logo.png';
+import logo from '../../../assets/Logo/Logo.png';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
