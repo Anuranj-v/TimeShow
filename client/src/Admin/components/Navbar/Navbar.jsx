@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./Navbar.module.css";
-import profile from "../../../assets/Profile/profile.jpg";
+import profile from "../../../assets/Profile/Profile.jpg";
 
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
