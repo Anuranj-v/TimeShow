@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Navbar.module.css";
-import logo from "../../../assets/Logo/logo.png";
+import logo from "../../../assets/Logo/Logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import axios from "axios";
