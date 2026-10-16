@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./Navbar.module.css";
-import profile from "../../../assets/Profile/profile.jpg";
+import profile from "../../../assets/Profile/Profile.jpg";
 import { Link } from "react-router-dom";
 
 import SearchIcon from "@mui/icons-material/Search";
