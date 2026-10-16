@@ -1547,17 +1547,17 @@ def Search(request, key):
           })
     for t in theatres:
         data.append({
-            "type": "Theatre",
-            "name": t.theater_name,
-            "link": f"/TheatreView/movies/{t.id}"
-        })
+        "type": "Theatre",
+        "name": t.theater_name,
+        "link": f"/User/TheatreView/{t.id}"
+    })
 
-    for c in cities:
-        data.append({
-            "type": "City",
-            "name": c.city_name,
-            "link": f"/city/{c.id}"
-        })
+    # for c in cities:
+    #     data.append({
+    #         "type": "City",
+    #         "name": c.city_name,
+    #         "link": f"/city/{c.id}"
+    #     })
 
     return JsonResponse({
         "status": True,

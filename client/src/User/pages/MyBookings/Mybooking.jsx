@@ -32,7 +32,7 @@ const MyBookings = () => {
                 .then(res => {
                     setBookings(res.data.data);
 
-                    // initialize timers
+
                     const initialTimers = {};
                     res.data.data.forEach(b => {
                         if (b.time_left) {
@@ -56,7 +56,7 @@ const MyBookings = () => {
     }, [userId]);
 
 
-    // countdown every second
+
     useEffect(() => {
 
         const timer = setInterval(() => {
@@ -124,7 +124,7 @@ const MyBookings = () => {
 
             alert("Booking cancelled successfully");
 
-            // refresh bookings
+
             const updated = await axios.get(`http://127.0.0.1:8000/MyBookings/${userId}/`);
             setBookings(updated.data.data);
 
@@ -178,7 +178,6 @@ const MyBookings = () => {
                             </div>
 
 
-                            {/* TIME SECTION */}
                             {d.booking_status === 0 && timers[d.id] > 0 && (
                                 <div style={{ color: "red", fontWeight: "600", marginTop: "6px" }}>
                                     Payment Time Left: {formatTime(timers[d.id])}
@@ -241,7 +240,7 @@ const MyBookings = () => {
 
                             </div>
 
-                            {/* ── REVIEW SECTION ── */}
+
                             {d.booking_status === 1 && (
                                 <>
                                     <div

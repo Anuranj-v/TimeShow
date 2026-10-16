@@ -5,11 +5,15 @@
 }
 
 .heading {
-  font-size: 26px;
-  margin-bottom: 30px;
-  font-weight: 600;
+  font-family: 'Bebas Neue', 'Georgia', serif;
+  font-size: clamp(52px, 7vw, 82px);
+  letter-spacing: 0.04em;
+  line-height: 0.92;
+  color: #f0ece4;
+  margin-left: -11px;
+  margin-top: 100px;
 }
-
+.heading span { color: #e8294b; }
 /* Card */
 .card {
   display: flex;

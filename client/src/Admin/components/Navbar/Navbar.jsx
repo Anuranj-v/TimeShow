@@ -29,7 +29,7 @@ const Navbar = () => {
                 {/* Search */}
                 <div className={style.Search}>
                     <SearchIcon className={style.icon} />
-                    <input type="text" placeholder="Search..." />
+                    <input type="text" placeholder="Search" />
                 </div>
 
                 {/* Right Items */}

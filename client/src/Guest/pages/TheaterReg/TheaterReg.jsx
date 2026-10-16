@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TheaterReg.module.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";   
 
 const TheaterReg = () => {
+
+    const navigate = useNavigate();   
 
     const [theaterName, setTheaterName] = useState("");
     const [theaterEmail, setTheaterEmail] = useState("");
@@ -98,6 +101,12 @@ const TheaterReg = () => {
                 setTheaterPhoto(null);
                 setTheaterProof(null);
 
+                // ✅ SUCCESS MESSAGE
+                alert("Theatre Registration Successful! 🎉");
+
+                // ✅ OPTIONAL REDIRECT
+                navigate("/guest/login");
+
             })
             .catch((error) => {
                 console.error("Error saving theater:", error);
@@ -141,7 +150,6 @@ const TheaterReg = () => {
 
                 <div className={styles.divider}><span>Details</span></div>
 
-                {/* THEATRE NAME */}
                 <label>Theatre Name</label>
                 <input
                     type="text"
@@ -151,7 +159,6 @@ const TheaterReg = () => {
                 />
                 {errors.theaterName && <p className={styles.error}>{errors.theaterName}</p>}
 
-                {/* EMAIL */}
                 <label>Email address</label>
                 <input
                     type="email"
@@ -161,7 +168,6 @@ const TheaterReg = () => {
                 />
                 {errors.theaterEmail && <p className={styles.error}>{errors.theaterEmail}</p>}
 
-                {/* PHONE */}
                 <label>Phone number</label>
                 <input
                     type="tel"
@@ -173,7 +179,6 @@ const TheaterReg = () => {
                 />
                 {errors.theaterContact && <p className={styles.error}>{errors.theaterContact}</p>}
 
-                {/* DISTRICT */}
                 <label>District</label>
                 <select onChange={(e) => loadCity(e.target.value)}>
                     <option value="">Select</option>
@@ -184,7 +189,6 @@ const TheaterReg = () => {
                     ))}
                 </select>
 
-                {/* CITY */}
                 <label>City</label>
                 <select onChange={(e) => setCityId(e.target.value)}>
                     <option value="">Select</option>
@@ -196,7 +200,6 @@ const TheaterReg = () => {
                 </select>
                 {errors.city && <p className={styles.error}>{errors.city}</p>}
 
-                {/* PHOTO */}
                 <label>Upload Theatre Photo</label>
                 <input
                     type="file"
@@ -204,7 +207,6 @@ const TheaterReg = () => {
                 />
                 {errors.photo && <p className={styles.error}>{errors.photo}</p>}
 
-                {/* PROOF */}
                 <label>Upload Proof</label>
                 <input
                     type="file"
@@ -212,7 +214,6 @@ const TheaterReg = () => {
                 />
                 {errors.proof && <p className={styles.error}>{errors.proof}</p>}
 
-                {/* PASSWORD */}
                 <label>Password</label>
                 <input
                     type="password"
@@ -222,7 +223,6 @@ const TheaterReg = () => {
                 />
                 {errors.theaterPassword && <p className={styles.error}>{errors.theaterPassword}</p>}
 
-                {/* BUTTON */}
                 <button
                     onClick={handleSave}
                     className={styles.continueBtn}

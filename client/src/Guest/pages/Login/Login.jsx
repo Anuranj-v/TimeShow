@@ -121,7 +121,10 @@ const Login = () => {
                     Don’t have an account?{" "}
                     <Link to={'/guest/registration'}>Signup</Link>
                 </p>
-
+                <p className={styles.signupText}>
+                    Theatre{" "}
+                    <Link to={'/guest/theaterReg'}>Registration</Link>
+                </p>
             </div>
         </div>
     );

@@ -133,7 +133,7 @@ const City = () => {
                             <tr>
                                 <th className={styles.th}>#</th>
                                 <th className={styles.th}>City Name</th>
-                                <th className={styles.th}>District</th>
+                                {/* <th className={styles.th}>District</th> */}
                                 <th className={styles.th}>Actions</th>
                             </tr>
                         </thead>
@@ -151,11 +151,11 @@ const City = () => {
                                         <td className={styles.td}>
                                             <span className={styles.cityTag}>{data.city_name}</span>
                                         </td>
-                                        <td className={styles.td}>
+                                        {/* <td className={styles.td}>
                                             <span className={styles.districtTag}>
                                                 {data.district_name ?? "—"}
                                             </span>
-                                        </td>
+                                        </td> */}
                                         <td className={styles.td}>
                                             {/* ✅ Fixed: was d.id, now data.id */}
                                             <button className={styles.editBtn} onClick={() => startEdit(data)}>Edit</button>
@@ -169,7 +169,7 @@ const City = () => {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 

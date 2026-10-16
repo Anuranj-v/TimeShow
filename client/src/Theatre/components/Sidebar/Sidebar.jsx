@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import style from './Sidebar.module.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/Logo/logo.png';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -30,9 +30,13 @@ const NAV_ITEMS = [
 
 const Sidebar = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
     const [hovered, setHovered] = useState(null);
-
+    const logout = () => {
+        sessionStorage.removeItem("tid"); // theatre id
+        navigate("/Guest/login");
+    };
     return (
         <div className={`${style.Sidebar} ${collapsed ? style.collapsed : ''}`}>
 
@@ -107,7 +111,11 @@ const Sidebar = () => {
                             <span className={style.footerName}>Theatre Admin</span>
                             <span className={style.footerRole}>G Cinemas</span>
                         </div>
-                        <LogoutIcon className={style.logoutIcon} title="Logout" />
+                        <LogoutIcon
+                            className={style.logoutIcon}
+                            title="Logout"
+                            onClick={logout}
+                        />
                     </>
                 )}
             </div>

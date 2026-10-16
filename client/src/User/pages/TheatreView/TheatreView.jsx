@@ -45,7 +45,7 @@ const TheatreView = () => {
     return (
         <div className={styles.page}>
 
-            <h2 className={styles.heading}>Theatres in Your City</h2>
+            <h2 className={styles.heading}><span>Theatres</span> in Your City</h2>
 
             {loading && <p>Loading theatres...</p>}
 

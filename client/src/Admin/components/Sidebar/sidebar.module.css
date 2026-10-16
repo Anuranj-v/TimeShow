@@ -264,3 +264,40 @@
     transparent
   );
 }
+/* LOGOUT SECTION */
+.logoutSection {
+    margin-top: auto;
+    padding: 15px;
+}
+
+/* LOGOUT BUTTON */
+.logoutBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+
+    padding: 10px;
+    background: linear-gradient(135deg, #e8294b, #c01030);
+    border: none;
+    color: white;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.logoutBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(232, 41, 75, 0.4);
+}
+
+/* COLLAPSED MODE */
+.collapsed .logoutBtn span {
+    display: none;
+}

@@ -1,124 +1,302 @@
-.container {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 30px;
-  background: #1f1f1f;
-  color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+/* ── PAGE ── */
+.page {
+    padding: 40px 48px 60px;
+    min-height: 100vh;
+    color: #e8e0d0;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
 }
 
-/* Heading */
-.container h2 {
-  margin-bottom: 20px;
+/* ── HEADER ── */
+.pageHeader {
+    margin-bottom: 32px;
 }
 
-/* Form */
-.formGroup {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
+.eyebrow {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #d4af5a;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.eyebrow::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: #d4af5a;
 }
 
-.formGroup label {
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: #cccccc;
+.pageTitle {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #e8e0d0;
+    margin-bottom: 4px;
 }
 
-input,
-select {
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  background: #2c2c2c;
-  color: white;
-  font-size: 14px;
+.pageSub {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(232, 224, 208, 0.38);
 }
 
-input:focus,
-select:focus {
-  outline: none;
-  border: 1px solid #ff4d6d;
+/* ── LAYOUT: side-by-side on large, stacked on small ── */
+.layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: start;
 }
 
-/* Button */
-.btn {
-  width: 100%;
-  padding: 12px;
-  background: #ff4d6d;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+/* ── FORM CARD ── */
+.formCard {
+    background: rgba(15, 25, 40, 0.85);
+    border: 1px solid rgba(180, 140, 60, 0.18);
+    border-radius: 14px;
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.btn:hover {
-  background: #ff2e55;
+.cardLabel {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #e8e0d0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(180, 140, 60, 0.12);
 }
 
-/* Table Wrapper */
-.tableWrapper {
-  margin-top: 40px;
+/* ── FIELD GROUP ── */
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 
-/* Table */
+.label {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(232, 224, 208, 0.4);
+}
+
+.input,
+.select {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(180, 140, 60, 0.2);
+    border-radius: 8px;
+    color: #e8e0d0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    color-scheme: dark;
+}
+.input::placeholder {
+    color: rgba(232, 224, 208, 0.2);
+}
+.input:focus,
+.select:focus {
+    border-color: rgba(212, 175, 90, 0.55);
+    box-shadow: 0 0 0 3px rgba(212, 175, 90, 0.1);
+}
+.select option {
+    background: #0f1928;
+    color: #e8e0d0;
+}
+
+/* ── SUBMIT BUTTON ── */
+.submitBtn {
+    width: 100%;
+    background: linear-gradient(135deg, #b8922a, #d4af5a);
+    border: none;
+    color: #0a0f18;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(212, 175, 90, 0.28);
+    margin-top: 4px;
+}
+.submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(212, 175, 90, 0.45);
+}
+
+/* ── TABLE CARD ── */
+.tableCard {
+    background: rgba(15, 25, 40, 0.85);
+    border: 1px solid rgba(180, 140, 60, 0.18);
+    border-radius: 14px;
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    overflow: hidden;
+}
+
+.tableHead {
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(180, 140, 60, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tableHeadTitle {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #e8e0d0;
+}
+
+.tableCount {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: rgba(232, 224, 208, 0.4);
+    background: rgba(212, 175, 90, 0.08);
+    border: 1px solid rgba(180, 140, 60, 0.18);
+    padding: 4px 12px;
+    border-radius: 4px;
+}
+
+.tableWrap {
+    overflow-x: auto;
+}
+
+/* ── TABLE ── */
 .table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #2a2a2a;
-  border-radius: 10px;
-  overflow: hidden;
+    width: 100%;
+    border-collapse: collapse;
 }
 
-/* Header */
 .table thead {
-  background-color: #333;
+    background: rgba(212, 175, 90, 0.06);
 }
 
 .table th {
-  text-align: left;
-  padding: 14px 16px;
-  font-size: 15px;
-  color: #ffffff;
+    padding: 12px 20px;
+    text-align: left;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(232, 224, 208, 0.38);
+    border-bottom: 1px solid rgba(180, 140, 60, 0.12);
+    white-space: nowrap;
 }
 
-/* Rows */
 .table td {
-  padding: 14px 16px;
-  font-size: 14px;
-  color: #dddddd;
-  border-top: 1px solid #444;
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #e8e0d0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    vertical-align: middle;
 }
 
-/* Row hover */
-.table tbody tr:hover {
-  background-color: #3a3a3a;
+.table tbody tr:last-child td {
+    border-bottom: none;
 }
 
-/* Empty state */
-.empty {
-  text-align: center;
-  padding: 30px;
-  color: #999;
-  font-style: italic;
+.table tbody tr {
+    transition: background 0.15s;
 }
 
-/* Action Button */
+.table tbody tr:hover td {
+    background: rgba(212, 175, 90, 0.05);
+}
+
+/* ── CELL VARIANTS ── */
+.tdNum {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 12px;
+    color: rgba(232, 224, 208, 0.35);
+}
+
+.tdName {
+    font-weight: 600;
+}
+
+.tdType {
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 12px;
+    color: #d4af5a;
+    letter-spacing: 0.08em;
+}
+
+/* seat count pill */
+.seatPill {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(212, 175, 90, 0.1);
+    border: 1px solid rgba(212, 175, 90, 0.2);
+    color: #d4af5a;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+/* ── DELETE BUTTON ── */
 .deleteBtn {
-  background: transparent;
-  border: 1px solid #ff4d6d;
-  color: #ff4d6d;
-  padding: 6px 14px;
-  border-radius: 6px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.2s;
+    background: rgba(251, 113, 133, 0.08);
+    border: 1px solid rgba(251, 113, 133, 0.25);
+    color: #fb7185;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+}
+.deleteBtn:hover {
+    background: rgba(251, 113, 133, 0.18);
+    border-color: #fb7185;
+    box-shadow: 0 4px 14px rgba(251, 113, 133, 0.2);
+    transform: translateY(-1px);
 }
 
-.deleteBtn:hover {
-  background-color: #ff4d6d;
-  color: #fff;
+/* ── EMPTY ROW ── */
+.emptyRow {
+    text-align: center;
+    padding: 48px !important;
+    color: rgba(232, 224, 208, 0.25) !important;
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .page { padding: 30px 24px 40px; }
+}
+
+@media (max-width: 480px) {
+    .page { padding: 24px 16px 40px; }
 }

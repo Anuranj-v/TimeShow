@@ -148,23 +148,25 @@ const SeatBooking = () => {
       setBooking(false);
     }
   };
-
+  let globalRowIndex = 0;
   return (
+
     <div className={styles.container}>
       <header className={styles.header}>
         <Link to="/" className={styles.backBtn}>✕</Link>
         <div className={styles.movieInfo}>
           <h2>Select Seats</h2>
-          <p>Movie {movieId} • Theater {theaterId} • {time}</p>
+          {/* <p>Movie {movieId} • Theater {theaterId} • {time}</p> */}
         </div>
       </header>
 
       <div className={styles.screenContainer}>
-        <div className={styles.screen}></div>
         <p className={styles.screenText}>All eyes this way please!</p>
+        <div className={styles.screen}></div>
+
       </div>
 
-      <div className={styles.legend}>
+      {/* <div className={styles.legend}>
         <div className={styles.legendItem}>
           <span className={`${styles.seat} ${styles.availableSample}`} /> Available
         </div>
@@ -174,7 +176,7 @@ const SeatBooking = () => {
         <div className={styles.legendItem}>
           <span className={`${styles.seat} ${styles.reserved}`} /> Sold Out
         </div>
-      </div>
+      </div> */}
 
       {loading && <p style={{ padding: 16 }}>Loading seats...</p>}
 
@@ -189,7 +191,8 @@ const SeatBooking = () => {
               <h3>{section.seat_type} - ₹{section.price}</h3>
 
               {Array.from({ length: section.rows }).map((_, rowIndex) => {
-                const rowLetter = String.fromCharCode(65 + rowIndex);
+                const rowLetter = String.fromCharCode(65 + globalRowIndex);
+                globalRowIndex++;
 
                 return (
                   <div key={rowIndex} className={styles.row}>
@@ -246,6 +249,19 @@ const SeatBooking = () => {
           {booking ? "Booking..." : "Book Tickets"}
         </button>
       </footer>
+      <div className={styles.legend}>
+        <div className={styles.legendItem}>
+          <span className={`${styles.seat} ${styles.availableSample}`} /> Available
+        </div>
+        <div className={styles.legendItem}>
+          <span className={`${styles.seat} ${styles.selected}`} /> Selected
+        </div>
+        <div className={styles.legendItem}>
+          <span className={`${styles.seat} ${styles.reserved}`} /> Sold Out
+        </div>
+      </div>
+
+
     </div>
   );
 };

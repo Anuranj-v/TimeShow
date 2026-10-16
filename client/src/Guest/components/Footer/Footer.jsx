@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import googlePlay from "../../../assets/Store/GooglePlay.png";
-import appStore from "../../../assets/Store/Appstore.svg";
+import appStore from "../../../assets/Store/appstore.svg";
 import logo from "../../../assets/Logo/logo.png";
 
 const Footer = () => {

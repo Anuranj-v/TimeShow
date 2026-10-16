@@ -82,7 +82,7 @@ const Navbar = () => {
                         <SearchIcon className={style.searchIcon} />
                         <input
                             type="text"
-                            placeholder="Search movies, shows…"
+                            placeholder="Search"
                             onFocus={() => setSearchFocused(true)}
                             onBlur={() => setSearchFocused(false)}
                         />

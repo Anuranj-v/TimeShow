@@ -165,7 +165,7 @@ const Registration = () => {
           Welcome! Please fill in the details to get started.
         </p>
 
-        {/* Username */}
+        
         <label className={styles.label}>User Name</label>
 
         <input
@@ -178,7 +178,7 @@ const Registration = () => {
 
         {errors.userName && <p className={styles.error}>{errors.userName}</p>}
 
-        {/* Email */}
+        
         <label className={styles.label}>Email address</label>
 
         <input
@@ -191,7 +191,7 @@ const Registration = () => {
 
         {errors.userEmail && <p className={styles.error}>{errors.userEmail}</p>}
 
-        {/* City */}
+       
         <label className={styles.label}>City</label>
 
         <div className={styles.autoWrap} ref={cityBoxRef}>
@@ -298,7 +298,9 @@ const Registration = () => {
         <p className={styles.signinText}>
           Already have an account? <Link to={"/guest/login"}>Sign in</Link>
         </p>
-
+        {/* <p className={styles.signinText}>
+          Theatre Registration <Link to={"/guest/TheatreReg"}>Sign in</Link>
+        </p> */}
       </div>
 
     </div>

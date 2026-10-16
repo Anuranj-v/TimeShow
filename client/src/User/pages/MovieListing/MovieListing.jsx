@@ -57,7 +57,7 @@ const MovieListing = () => {
 
 
             <div className={styles.page}>
-                <h2 className={styles.heading}>Now Showing</h2>
+                <h2 className={styles.title}>Now<br /><span>Showing</span></h2>
                 <div className={styles.filterBar}>
 
                     <span>Sort</span>

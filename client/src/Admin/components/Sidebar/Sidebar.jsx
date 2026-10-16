@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import style from './Sidebar.module.css'
-import { Link, useLocation } from 'react-router'
-import logo from '../../../assets/Logo/logo.png'
+import React, { useState } from 'react';
+import style from './Sidebar.module.css';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import logo from '../../../assets/Logo/logo.png';
+
 import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import MovieIcon from '@mui/icons-material/Movie';
@@ -11,12 +12,11 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import WeekendIcon from '@mui/icons-material/Weekend';
 import ChairIcon from '@mui/icons-material/Chair';
 import MenuIcon from '@mui/icons-material/Menu';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const NAV_ITEMS = [
     { to: "/admin/", icon: <DashboardIcon />, label: "Dashboard" },
     { to: "/admin/district", icon: <SlowMotionVideoIcon />, label: "District" },
-    // { to: "/admin/Genres", icon: <AddReactionIcon />, label: "Genres" },
-    // { to: "/admin/MovieGenres", icon: <MovieIcon />, label: "Movie Genre" },
     { to: "/admin/City", icon: <PlaceIcon />, label: "City" },
     { to: "/admin/Movies", icon: <MovieIcon />, label: "Movies" },
     { to: "/admin/ScreenType", icon: <WeekendIcon />, label: "Screen Type" },
@@ -29,10 +29,17 @@ const NAV_ITEMS = [
 
 const Sidebar = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
+
+    const logout = () => {
+        sessionStorage.removeItem("aid"); // admin id remove
+        navigate("/Guest/login");
+    };
 
     return (
         <div className={`${style.Sidebar} ${collapsed ? style.collapsed : ''}`}>
+
             {/* Top / Logo */}
             <div className={style.Top}>
                 {!collapsed && (
@@ -41,9 +48,8 @@ const Sidebar = () => {
                 <button
                     className={style.collapseBtn}
                     onClick={() => setCollapsed(x => !x)}
-                    title={collapsed ? "Expand" : "Collapse"}
                 >
-                    <MenuIcon style={{ fontSize: 20 }} />
+                    <MenuIcon />
                 </button>
             </div>
 
@@ -58,19 +64,25 @@ const Sidebar = () => {
                             key={item.to}
                             to={item.to}
                             className={`${style.menuitem} ${isActive ? style.active : ''}`}
-                            title={collapsed ? item.label : ''}
                         >
                             <span className={style.iconWrap}>
                                 {item.icon}
                             </span>
                             {!collapsed && <span className={style.label}>{item.label}</span>}
-                            {isActive && !collapsed && <span className={style.activeDot} />}
                         </Link>
                     );
                 })}
             </div>
 
-            {/* Bottom tag */}
+            {/* 🔥 LOGOUT BUTTON */}
+            <div className={style.logoutSection}>
+                <button className={style.logoutBtn} onClick={logout}>
+                    <LogoutIcon />
+                    {!collapsed && <span>Logout</span>}
+                </button>
+            </div>
+
+            {/* Bottom */}
             {!collapsed && (
                 <div className={style.bottom}>
                     <span className={style.bottomText}>CineAdmin v1.0</span>

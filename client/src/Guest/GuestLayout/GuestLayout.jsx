@@ -7,10 +7,11 @@ import Navbar from '../components/Navbar/Navbar'
 const GuestLayout = () => {
     return (
         <>
-            <div><Navbar /></div>
+            <div className={Styles.userLayout}><Navbar />
 
-            <div className={Styles.container}><GuestRoutes /></div>
-            < div > <Footer /></div>
+                <div className={Styles.content}><GuestRoutes /></div>
+                < div > <Footer /></div>
+            </div >
         </>
     )
 }

@@ -11,44 +11,32 @@ const Screen = () => {
 
     const theaterId = sessionStorage.getItem("tid");
 
-
-
     useEffect(() => {
-        axios
-            .get("http://127.0.0.1:8000/Screentype/")
+        axios.get("http://127.0.0.1:8000/Screentype/")
             .then((res) => setScreenTypes(res.data.data))
             .catch((err) => console.error(err));
     }, []);
 
-
     const loadScreens = () => {
         axios.get(`http://127.0.0.1:8000/Screenview/${theaterId}/`)
-            .then((res) => {
-
-                setScreens(res.data.data);
-            })
+            .then((res) => setScreens(res.data.data))
             .catch((err) => console.error(err));
     };
 
-    useEffect(() => {
-        loadScreens();
-    }, []);
-
+    useEffect(() => { loadScreens(); }, []);
 
     const handleSubmit = () => {
         if (!screenName || !seatNumber || !screenType) {
             alert("Fill all fields");
             return;
         }
-
         const formData = new FormData();
         formData.append("theater_id", theaterId);
         formData.append("screentype_id", screenType);
         formData.append("screen_seatno", seatNumber);
         formData.append("screen_name", screenName);
 
-        axios
-            .post("http://127.0.0.1:8000/Screen/", formData)
+        axios.post("http://127.0.0.1:8000/Screen/", formData)
             .then(() => {
                 alert("Screen Added 🎉");
                 setScreenName("");
@@ -59,105 +47,125 @@ const Screen = () => {
             .catch((err) => console.error(err));
     };
 
-
     const handleDelete = (id) => {
-        axios
-            .get(`http://127.0.0.1:8000/DeleteScreen/${id}/`)
+        axios.get(`http://127.0.0.1:8000/DeleteScreen/${id}/`)
             .then(() => loadScreens())
             .catch((err) => console.error(err));
     };
 
     return (
-        <div className={styles.container}>
-            <h2>Add Screen</h2>
+        <div className={styles.page}>
 
-
-            <div className={styles.formGroup}>
-                <label>Screen Name</label>
-                <input
-                    type="text"
-                    value={screenName}
-                    onChange={(e) => setScreenName(e.target.value)}
-                    placeholder="Enter screen name (Screen 1, Audi 2)"
-                />
+            {/* ── HEADER ── */}
+            <div className={styles.pageHeader}>
+                <div className={styles.eyebrow}>Theatre Panel</div>
+                <h1 className={styles.pageTitle}>Screens</h1>
+                <p className={styles.pageSub}>Add and manage your theatre screens</p>
             </div>
 
+            <div className={styles.layout}>
 
-            <div className={styles.formGroup}>
-                <label>Total Seats</label>
-                <input
-                    type="number"
-                    value={seatNumber}
-                    onChange={(e) => setSeatNumber(e.target.value)}
-                    placeholder="Enter total seats"
-                />
-            </div>
+                {/* ── FORM CARD ── */}
+                <div className={styles.formCard}>
+                    <div className={styles.cardLabel}>Add New Screen</div>
 
+                    <div className={styles.fieldGroup}>
+                        <label className={styles.label}>Screen Name</label>
+                        <input
+                            className={styles.input}
+                            type="text"
+                            value={screenName}
+                            onChange={(e) => setScreenName(e.target.value)}
+                            placeholder="e.g. Screen 1, Audi 2"
+                        />
+                    </div>
 
-            <div className={styles.formGroup}>
-                <label>Screen Type</label>
-                <select
-                    value={screenType}
-                    onChange={(e) => setScreenType(e.target.value)}
-                >
-                    <option value="">-- Select Screen Type --</option>
-                    {screenTypes.map((type) => (
-                        <option key={type.id} value={type.id}>
-                            {type.screentype_name}
-                        </option>
-                    ))}
-                </select>
-            </div>
+                    <div className={styles.fieldGroup}>
+                        <label className={styles.label}>Total Seats</label>
+                        <input
+                            className={styles.input}
+                            type="number"
+                            value={seatNumber}
+                            onChange={(e) => setSeatNumber(e.target.value)}
+                            placeholder="e.g. 120"
+                        />
+                    </div>
 
-            <button className={styles.btn} onClick={handleSubmit}>
-                Add Screen
-            </button>
+                    <div className={styles.fieldGroup}>
+                        <label className={styles.label}>Screen Type</label>
+                        <select
+                            className={styles.select}
+                            value={screenType}
+                            onChange={(e) => setScreenType(e.target.value)}
+                        >
+                            <option value="">— Select Screen Type —</option>
+                            {screenTypes.map((type) => (
+                                <option key={type.id} value={type.id}>
+                                    {type.screentype_name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
 
+                    <button className={styles.submitBtn} onClick={handleSubmit}>
+                        + Add Screen
+                    </button>
+                </div>
 
-            <h3 className={styles.tableTitle}>Screen List</h3>
+                {/* ── TABLE CARD ── */}
+                <div className={styles.tableCard}>
 
-            <div className={styles.tableWrapper}>
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Screen Name</th>
-                            <th>Total Seats</th>
-                            <th>Screen Type</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                    <div className={styles.tableHead}>
+                        <span className={styles.tableHeadTitle}>Screen List</span>
+                        <span className={styles.tableCount}>{screens.length} screens</span>
+                    </div>
 
-                    <tbody>
-                        {screens.length === 0 ? (
-                            <tr>
-                                <td colSpan="5" className={styles.empty}>
-                                    No screens added yet.
-                                </td>
-                            </tr>
-                        ) : (
-                            screens.map((d, index) => (
-                                <tr key={d.id}>
-                                    <td>{index + 1}</td>
-                                    <td>{d.Screen_name}</td>
-                                    <td>{d.screen_seatno}</td>
-                                    <td>
-                                        {d.screentype_name}
-                                    </td>
-                                    <td>
-                                        <button
-                                            onClick={() => handleDelete(d.id)}
-                                            className={styles.deleteBtn}
-                                        >
-                                            Delete
-                                        </button>
-                                    </td>
+                    <div className={styles.tableWrap}>
+                        <table className={styles.table}>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Screen Name</th>
+                                    <th>Total Seats</th>
+                                    <th>Screen Type</th>
+                                    <th>Action</th>
                                 </tr>
-                            ))
-                        )}
-                    </tbody>
-                </table>
+                            </thead>
+                            <tbody>
+                                {screens.length === 0 ? (
+                                    <tr>
+                                        <td colSpan="5" className={styles.emptyRow}>
+                                            No screens added yet
+                                        </td>
+                                    </tr>
+                                ) : (
+                                    screens.map((d, index) => (
+                                        <tr key={d.id}>
+                                            <td className={styles.tdNum}>{index + 1}</td>
+                                            <td className={styles.tdName}>{d.Screen_name}</td>
+                                            <td className={styles.tdSeats}>
+                                                <span className={styles.seatPill}>{d.screen_seatno} seats</span>
+                                            </td>
+                                            <td className={styles.tdType}>{d.screentype_name}</td>
+                                            <td>
+                                                <button
+                                                    className={styles.deleteBtn}
+                                                    onClick={() => handleDelete(d.id)}
+                                                >
+                                                    ✕ Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
     );
 };
