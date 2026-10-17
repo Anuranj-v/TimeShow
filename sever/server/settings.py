@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-p9qr-)+0i22x@u5%3hhdup4tm)y$m@wzex5s_6&6vs7jz6ociz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['timeshow.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
