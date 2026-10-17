@@ -11,11 +11,13 @@
 /* ================= TITLE ================= */
 .title{
   font-family: 'Bebas Neue', 'Georgia', serif;
-  font-size: clamp(52px, 7vw, 82px);
+  font-size: clamp(38px, 6vw, 82px);
   letter-spacing: 0.04em;
   line-height: 0.92;
   color: #f0ece4;
-  margin-left: -1100px;
+  width: 100%;
+  max-width: 1200px;
+  text-align: left;
 }
 .title span { color: #e8294b; }
 

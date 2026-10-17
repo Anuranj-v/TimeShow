@@ -62,3 +62,44 @@
   margin-bottom: 30px;
   color: #dddddd;
 }
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 80vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 100px 0 40px;
+  }
+
+  .heroContent {
+    padding: 0 16px;
+    top: auto;
+    transform: none;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .title {
+    font-size: clamp(28px, 7vw, 42px);
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .description {
+    font-size: 13.5px;
+    max-width: 100%;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .bookBtn {
+    padding: 12px 28px;
+    font-size: 14px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
