@@ -11,7 +11,7 @@ body,
 .userLayout {
   position: relative;
   min-height: 100vh;
-  background: #0a0a19;
+  background-color: var(--bg-color);
   display: flex;
   flex-direction: column;
  
