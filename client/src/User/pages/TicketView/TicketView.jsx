@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import styles from "./TicketView.module.css";
-
-const BASE_URL = "http://127.0.0.1:8000";
 
 const TicketView = () => {
     const { bookingId } = useParams();
@@ -68,7 +66,7 @@ const TicketView = () => {
     if (loading) return <div className={styles.loading}><div className={styles.spinner}></div><p>Loading ticket...</p></div>;
     if (!ticket) return <div className={styles.loading}><p>Ticket not found</p></div>;
 
-    const posterUrl = ticket.movie_poster ? `${BASE_URL}${ticket.movie_poster}` : "";
+    const posterUrl = getImageUrl(ticket.movie_poster);
 
     // Format date nicely
     const formatDate = (d) => {

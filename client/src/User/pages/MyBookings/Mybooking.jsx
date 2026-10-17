@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 import styles from "./MyBooking.module.css";
 import { Link } from "react-router-dom";
 
@@ -154,7 +154,7 @@ const MyBookings = () => {
                     <div key={index} className={`${styles.card} ${d.booking_status !== 1 ? styles.cardPending : ""}`}>
 
                         <div className={styles.poster}>
-                            <img src={`http://127.0.0.1:8000/${d.movie_poster}`} alt={d.movie_title} />
+                            <img src={getImageUrl(d.movie_poster)} alt={d.movie_title} />
 
                             {d.booking_status !== 1 && (
                                 <div className={styles.pendingRibbon}>PENDING</div>

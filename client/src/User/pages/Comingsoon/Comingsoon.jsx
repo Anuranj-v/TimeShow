@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 import styles from "./Comingsoon.module.css";
 
 const ComingSoon = () => {
@@ -43,7 +43,7 @@ const ComingSoon = () => {
                         {/* POSTER */}
                         <div className={styles.poster}>
                             <img
-                                src={`http://127.0.0.1:8000${m.poster}`}
+                                src={getImageUrl(m.poster)}
                                 alt={m.title}
                                 onError={e => { e.target.src = "https://placehold.co/170x240/111620/333?text=Poster"; }}
                             />

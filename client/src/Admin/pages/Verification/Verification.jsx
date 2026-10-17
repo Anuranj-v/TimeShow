@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 import styles from "./Verification.module.css";
 
 const Verification = () => {
@@ -98,7 +98,7 @@ const Verification = () => {
 
                                         <td>
                                             <img
-                                                src={`http://127.0.0.1:8000/${t.theater_photo}`}
+                                                src={getImageUrl(t.theater_photo)}
                                                 alt="Theatre"
                                                 className={styles.photo}
                                             />
@@ -106,7 +106,7 @@ const Verification = () => {
 
                                         <td>
                                             <a
-                                                href={`http://127.0.0.1:8000/${t.theater_proof}`}
+                                                href={getImageUrl(t.theater_proof)}
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className={styles.proofLink}

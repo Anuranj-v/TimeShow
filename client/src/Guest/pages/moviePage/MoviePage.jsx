@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./MoviePage.module.css";
 
@@ -44,7 +44,7 @@ const MoviePage = () => {
                     <div key={index} className={styles.card}>
 
                         <img
-                            src={`http://127.0.0.1:8000${movie.movie_poster}`}
+                            src={getImageUrl(movie.movie_poster)}
                             className={styles.poster}
                             alt={movie.movie_title}
                         />

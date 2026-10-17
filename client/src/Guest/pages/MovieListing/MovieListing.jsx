@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import styles from "./MovieListing.module.css";
 import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 
 
 
@@ -83,7 +83,7 @@ const MovieListing = () => {
                             <Link to={`/Guest/movie/${d.id}`} className={styles.card} key={d.id}>
 
                                 <div className={styles.poster}>
-                                    <img src={`http://127.0.0.1:8000/${d.movie_poster}`} />
+                                    <img src={getImageUrl(d.movie_poster)} alt={d.movie_title} />
 
                                     {d.badge && (
                                         <div className={`${styles.badge} ${styles["badge" + d.badge]}`}>

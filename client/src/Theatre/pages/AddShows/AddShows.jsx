@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AddShows.module.css";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 
 const AddShows = () => {
 
@@ -91,7 +91,7 @@ const AddShows = () => {
                         >
                             <div className={styles.posterContainer}>
                                 <img
-                                    src={`http://127.0.0.1:8000/${movie.movie_poster}`}
+                                    src={getImageUrl(movie.movie_poster)}
                                     alt={movie.movie_title}
                                 />
                             </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 import styles from "./MovieDetails.module.css";
 import { Link, useParams } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
@@ -121,7 +121,7 @@ const MovieDetails = () => {
             <div className={styles.banner}>
 
                 <img
-                    src={`http://127.0.0.1:8000/${movieDetailsDatas.movie_banner}`}
+                    src={getImageUrl(movieDetailsDatas.movie_banner)}
                     alt=""
                 />
 
@@ -131,7 +131,7 @@ const MovieDetails = () => {
 
                     <div className={styles.poster}>
                         <img
-                            src={`http://127.0.0.1:8000/${movieDetailsDatas.movie_poster}`}
+                            src={getImageUrl(movieDetailsDatas.movie_poster)}
                             alt=""
                         />
                     </div>

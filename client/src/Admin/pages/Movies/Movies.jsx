@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Movies.module.css";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 
 const Movies = () => {
 
@@ -109,14 +109,14 @@ const Movies = () => {
                                     <td>
                                         <img
                                             className={styles.posterImg}
-                                            src={`http://127.0.0.1:8000/${d.movie_poster}`}
+                                            src={getImageUrl(d.movie_poster)}
                                             alt={d.movie_title}
                                         />
                                     </td>
                                     <td>
                                         <img
                                             className={styles.bannerImg}
-                                            src={`http://127.0.0.1:8000/${d.movie_banner}`}
+                                            src={getImageUrl(d.movie_banner)}
                                             alt={d.movie_title}
                                         />
                                     </td>

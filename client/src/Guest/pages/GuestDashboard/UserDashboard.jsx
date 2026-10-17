@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../../api";
+import api, { getImageUrl } from "../../../api";
 import styles from "./UserDashboard.module.css";
 import { Link } from "react-router";
 
@@ -53,7 +53,7 @@ const HeroBanner = () => {
       <section className={styles.hero}>
         <div className={styles.heroBg}>
           <img
-            src={`http://127.0.0.1:8000/${heroMovie.movie_banner}`}
+            src={getImageUrl(heroMovie.movie_banner)}
             alt={heroMovie.movie_title}
           />
         </div>
@@ -115,7 +115,7 @@ const HeroBanner = () => {
 
                 <div className={styles.posterWrap}>
                   <img
-                    src={`http://127.0.0.1:8000/${movie.movie_poster}`}
+                    src={getImageUrl(movie.movie_poster)}
                     alt={movie.movie_title}
                     className={styles.moviePoster}
                     onError={(e) => {
