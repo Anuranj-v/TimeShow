@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import logo from "../../../assets/Logo/Logo.png";
 import SearchIcon from "@mui/icons-material/Search";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import profile from "../../../assets/Profile/Profile.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../../api";
@@ -18,6 +20,8 @@ const Navbar = () => {
 
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const profileRef = useRef(null);
+    const navbarRef = useRef(null);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
@@ -54,6 +58,10 @@ const Navbar = () => {
                 setShowProfileMenu(false);
             }
 
+            if (navbarRef.current && !navbarRef.current.contains(e.target)) {
+                setMobileMenuOpen(false);
+            }
+
         };
 
         document.addEventListener("mousedown", handleClickOutside);
@@ -75,20 +83,20 @@ const Navbar = () => {
 
 
     return (
-        <div className={styles.navbar}>
+        <div className={styles.navbar} ref={navbarRef}>
 
             {/* LOGO */}
-            <Link to="/User" className={styles.logoLink}>
+            <Link to="/User" className={styles.logoLink} onClick={() => setMobileMenuOpen(false)}>
                 <img src={logo} alt="TimeShow" className={styles.logoImg} />
             </Link>
 
 
             {/* MENU */}
-            <div className={styles.menu}>
-                <Link to="/User" className={styles.link}>Home</Link>
-                <Link to="/User/MovieListing" className={styles.link}>Movies</Link>
-                <Link to="/User/TheatreView" className={styles.link}>Theatres</Link>
-                <Link to="/User/ComingSoon" className={styles.link}>Releases</Link>
+            <div className={`${styles.menu} ${mobileMenuOpen ? styles.mobileOpen : ""}`}>
+                <Link to="/User" className={styles.link} onClick={() => setMobileMenuOpen(false)}>Home</Link>
+                <Link to="/User/MovieListing" className={styles.link} onClick={() => setMobileMenuOpen(false)}>Movies</Link>
+                <Link to="/User/TheatreView" className={styles.link} onClick={() => setMobileMenuOpen(false)}>Theatres</Link>
+                <Link to="/User/ComingSoon" className={styles.link} onClick={() => setMobileMenuOpen(false)}>Releases</Link>
             </div>
 
 
@@ -122,7 +130,10 @@ const Navbar = () => {
                                 key={index}
                                 to={item.link}
                                 className={styles.resultItem}
-                                onClick={() => setResults([])}
+                                onClick={() => {
+                                    setResults([]);
+                                    setMobileMenuOpen(false);
+                                }}
                             >
                                 {item.type} : {item.name}
                             </Link>
@@ -159,11 +170,11 @@ const Navbar = () => {
                         </div>
 
                         {/* MENU ITEMS */}
-                        <Link to="/User/MyProfile" className={styles.menuItem}>
+                        <Link to="/User/MyProfile" className={styles.menuItem} onClick={() => setShowProfileMenu(false)}>
                             Manage account
                         </Link>
 
-                        <Link to="/User/MyBookings" className={styles.menuItem}>
+                        <Link to="/User/MyBookings" className={styles.menuItem} onClick={() => setShowProfileMenu(false)}>
                             My Bookings
                         </Link>
 
@@ -177,6 +188,16 @@ const Navbar = () => {
                 )}
 
             </div>
+
+            {/* MOBILE MENU TOGGLE */}
+            <button
+                type="button"
+                className={styles.mobileMenuToggle}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle navigation menu"
+            >
+                {mobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </button>
 
         </div >
     );

@@ -259,3 +259,107 @@
   font-size:12px;
   border-radius:4px;
 }
+
+/* ===== RESPONSIVE MOBILE STYLES ===== */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    min-height: 80vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 100px 0 40px;
+  }
+
+  .heroContent {
+    padding: 0 16px;
+    top: auto;
+    transform: none;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .title {
+    font-size: clamp(28px, 7vw, 42px);
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .meta {
+    font-size: 13px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .description {
+    font-size: 13.5px;
+    max-width: 100%;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .bookBtn {
+    padding: 12px 28px;
+    font-size: 14px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .movieSection {
+    padding: 36px 16px;
+  }
+
+  .sectionTitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .movieGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .moviePoster {
+    height: 220px;
+  }
+
+  .cardBtn {
+    width: 90%;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .trailerSection {
+    padding: 36px 16px;
+  }
+
+  .trailerSection iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 260px;
+    border-radius: 12px;
+  }
+
+  .trailerCard {
+    min-width: 85vw;
+    max-width: 90vw;
+  }
+}
+
+@media (max-width: 380px) {
+  .movieGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .moviePoster {
+    height: 260px;
+  }
+}
