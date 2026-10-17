@@ -1,6 +1,6 @@
 import styles from "./AdminDashboard.module.css";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 
 const AdminDashboard = () => {
 
@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     const [cities, setCities] = useState([]);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/AdminDashboard/")
+        api.get("AdminDashboard/")
             .then(res => {
                 setStats(res.data.stats);
                 setBookings(res.data.recentBookings);

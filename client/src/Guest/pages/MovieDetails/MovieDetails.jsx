@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./MovieDetails.module.css";
 import { Link, useParams } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
@@ -43,8 +43,8 @@ const MovieDetails = () => {
 
     // ---------- LOAD THEATRES ----------
     useEffect(() => {
-        axios
-            .get(`http://127.0.0.1:8000/MovieTheatersWithShows/${id}/`)
+        api
+            .get(`MovieTheatersWithShows/${id}/`)
             .then((response) => {
                 console.log(response.data.data);
                 setTheatres(response.data.data);
@@ -54,8 +54,8 @@ const MovieDetails = () => {
 
     // ---------- LOAD MOVIE DETAILS ----------
     useEffect(() => {
-        axios
-            .get(`http://127.0.0.1:8000/Movie/${id}/`)
+        api
+            .get(`Movie/${id}/`)
             .then((response) => {
                 setmovieDetailsDatas(response.data);
             })
@@ -64,8 +64,8 @@ const MovieDetails = () => {
 
     // ---------- LOAD RATING ----------
     useEffect(() => {
-        axios
-            .get(`http://127.0.0.1:8000/movie-rating/${id}/`)
+        api
+            .get(`movie-rating/${id}/`)
             .then(res => {
                 setRatingData({
                     average: res.data.average_rating,
@@ -77,8 +77,8 @@ const MovieDetails = () => {
 
     // ---------- LOAD REVIEWS ----------
     useEffect(() => {
-        axios
-            .get(`http://127.0.0.1:8000/movie-reviews/${id}/`)
+        api
+            .get(`movie-reviews/${id}/`)
             .then(res => {
                 setReviews(res.data.data);
             })
@@ -96,8 +96,8 @@ const MovieDetails = () => {
 
         const timer = setTimeout(() => {
 
-            axios
-                .get(`http://127.0.0.1:8000/CitySearch/?q=${search}`)
+            api
+                .get(`CitySearch/?q=${search}`)
                 .then((res) => {
                     setCitySuggestions(res.data.data);
                     setShowDrop(true);

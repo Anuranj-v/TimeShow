@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ChangePassword.module.css";
 import { Link } from "react-router";
-import axios from 'axios';
+import api from "../../../api";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -17,7 +17,7 @@ const ChangePassword = () => {
     const handleChangePassword = () => {
         if (newPwd !== confPwd)
             return alert('New passwords do not match');
-        axios.get(`http://127.0.0.1:8000/ChangeUserPassword/${userId}/`,
+        api.get(`ChangeUserPassword/${userId}/`,
             { old_password: oldPwd, new_password: newPwd })
             .then(res => {
                 alert(res.data.message)

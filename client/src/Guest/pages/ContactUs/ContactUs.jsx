@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./ContactUs.module.css";
 import { Link } from "react-router";
 
@@ -26,7 +26,7 @@ const ContactUs = () => {
         formData.append("complaint_title", title);
         formData.append("complaint_content", complaint);
 
-        axios.post("http://127.0.0.1:8000/Complaint/", formData)
+        api.post("Complaint/", formData)
             .then(() => {
 
                 alert("Complaint Submitted Successfully");

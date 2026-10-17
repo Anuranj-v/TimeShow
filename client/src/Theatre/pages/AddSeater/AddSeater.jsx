@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./AddSeater.module.css";
 
 const AddSeater = () => {
@@ -20,18 +20,18 @@ const AddSeater = () => {
     const totalSeats = rows && columns ? parseInt(rows) * parseInt(columns) : 0;
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/Screenview/${theaterId}/`)
+        api.get(`Screenview/${theaterId}/`)
             .then(res => setScreens(res.data.data))
             .catch(console.error);
     }, []);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/SeatType/")
+        api.get("SeatType/")
             .then(res => setSeatTypes(res.data.data));
     }, []);
 
     const loadLayouts = () => {
-        axios.get(`http://127.0.0.1:8000/ScreenSeatview/${theaterId}/`)
+        api.get(`ScreenSeatview/${theaterId}/`)
             .then(res => setLayoutList(res.data.data));
     };
 
@@ -52,13 +52,13 @@ const AddSeater = () => {
         formData.append("screenseat_total", totalSeats);
         formData.append("screenseat_amountper", price);
 
-        axios.post("http://127.0.0.1:8000/ScreenSeat/", formData)
+        api.post("ScreenSeat/", formData)
             .then(res => { alert(res.data.msg); loadLayouts(); setSaving(false); })
             .catch(err => { console.error(err); setSaving(false); });
     };
 
     const handleDelete = id => {
-        axios.get(`http://127.0.0.1:8000/DeleteScreenSeat/${id}/`)
+        api.get(`DeleteScreenSeat/${id}/`)
             .then(() => loadLayouts());
     };
 

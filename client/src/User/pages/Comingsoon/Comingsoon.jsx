@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./Comingsoon.module.css";
 
 const ComingSoon = () => {
@@ -7,7 +7,7 @@ const ComingSoon = () => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/UpcomingMovies/")
+        api.get("UpcomingMovies/")
             .then((res) => setMovies(res.data.data))
             .catch((err) => console.log(err));
     }, []);

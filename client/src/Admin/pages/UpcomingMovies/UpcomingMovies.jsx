@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./UpcomingMovies.module.css";
 
 const UpcomingMovie = () => {
@@ -39,7 +39,7 @@ const UpcomingMovie = () => {
         formData.append("upmovie_poster", poster);
 
         try {
-            await axios.post("http://127.0.0.1:8000/UpcomingMovies/", formData);
+            await api.post("UpcomingMovies/", formData);
             alert("Upcoming movie added successfully");
             setMovie({ title: "", genre: "", release_date: "", description: "", trailer: "" });
             setPoster(null);

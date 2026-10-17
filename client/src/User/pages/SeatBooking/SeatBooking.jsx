@@ -1,9 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./SeatBooking.module.css";
 
-const API = "http://127.0.0.1:8000";
 
 const SeatBooking = () => {
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ const SeatBooking = () => {
     const loadLayout = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`${API}/viewseat/${screenId}/`);
+        const res = await api.get(`viewseat/${screenId}/`);
         if (!alive) return;
         setSeatTypes(res?.data?.data || []);
       } catch (err) {
@@ -49,8 +48,8 @@ const SeatBooking = () => {
   // ✅ Load booked seats (NOW includes layoutId)
   const loadBookedSeats = async () => {
     try {
-      const res = await axios.get(
-        `${API}/bookedSeats/${screenId}/${movieId}/${encodeURIComponent(time)}/`
+      const res = await api.get(
+        `bookedSeats/${screenId}/${movieId}/${encodeURIComponent(time)}/`
       );
       const booked = res?.data?.bookedSeats || [];
       setBookedSeats(booked);
@@ -99,8 +98,8 @@ const SeatBooking = () => {
       setBooking(true);
 
       // ✅ re-check booked seats
-      const res = await axios.get(
-        `${API}/bookedSeats/${screenId}/${movieId}/${encodeURIComponent(time)}/`
+      const res = await api.get(
+        `bookedSeats/${screenId}/${movieId}/${encodeURIComponent(time)}/`
       );
       const latestBooked = new Set(res?.data?.bookedSeats || []);
 
@@ -120,7 +119,7 @@ const SeatBooking = () => {
       formData.append("booking_date", new Date().toISOString().split("T")[0]);
       formData.append("booking_time", time);
 
-      const bookingRes = await axios.post(`${API}/Booking/`, formData);
+      const bookingRes = await api.post(`Booking/`, formData);
       const bookingId = bookingRes?.data?.booking_id;
 
       if (!bookingId) return alert("booking_id not returned");
@@ -134,7 +133,7 @@ const SeatBooking = () => {
         seatForm.append("screenseat_id", layoutId);
         seatForm.append("seatbooking_number", seatNumber);
 
-        return axios.post(`${API}/SeatBooking/`, seatForm);
+        return api.post(`SeatBooking/`, seatForm);
       });
 
       await Promise.all(seatRequests);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./MyProfile.module.css";
-import axios from 'axios';
+import api from "../../../api";
 import { Link } from 'react-router-dom';
 
 const MyProfile = () => {
@@ -9,7 +9,7 @@ const MyProfile = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/theaterprofile/${theaterId}/`)
+        api.get(`theaterprofile/${theaterId}/`)
             .then(res => { setData(res.data); setLoading(false); })
             .catch(err => { console.error(err); setLoading(false); });
     }, []);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./EditProfile.module.css";
-import axios from 'axios';
+import api from "../../../api";
 import { Link, useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
@@ -14,7 +14,7 @@ const EditProfile = () => {
     const [saving, setSaving] = useState(false);
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/theaterprofile/${theaterId}/`)
+        api.get(`theaterprofile/${theaterId}/`)
             .then(res => {
                 setEditName(res.data.theater_name || '');
                 setEditEmail(res.data.theater_email || '');
@@ -26,7 +26,7 @@ const EditProfile = () => {
 
     const handleSave = () => {
         setSaving(true);
-        axios.put(`http://127.0.0.1:8000/edittheaterprofile/${theaterId}/`, {
+        api.put(`edittheaterprofile/${theaterId}/`, {
             theater_name: editName,
             theater_email: editEmail,
             theater_contact: editContact,

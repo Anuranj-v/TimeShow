@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Payment.module.css";
-import axios from "axios";
+import api from "../../../api";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Payment = () => {
@@ -117,8 +117,8 @@ const Payment = () => {
 
         try {
 
-            await axios.put(
-                `http://127.0.0.1:8000/make-payment/${bookingId}/`
+            await api.put(
+                `make-payment/${bookingId}/`
             );
 
             alert("Payment Successful");
@@ -143,8 +143,8 @@ const Payment = () => {
 
         setPageLoading(true);
 
-        axios.get(
-            `http://127.0.0.1:8000/booking-details/${bookingId}/`
+        api.get(
+            `booking-details/${bookingId}/`
         )
             .then(res => {
                 setBookingData(res.data);

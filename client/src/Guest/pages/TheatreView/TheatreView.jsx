@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TheatreView.module.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import axios from "axios";
+import api from "../../../api";
 import { useNavigate } from "react-router-dom";
 
 const TheatreView = () => {
@@ -17,8 +17,8 @@ const TheatreView = () => {
 
         if (!userId) return;
 
-        axios
-            .get(`http://127.0.0.1:8000/city-theatres/${userId}/`)
+        api
+            .get(`city-theatres/${userId}/`)
             .then((res) => {
 
                 if (res.data.status) {

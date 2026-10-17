@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./Screen.module.css";
 
 const Screen = () => {
@@ -12,13 +12,13 @@ const Screen = () => {
     const theaterId = sessionStorage.getItem("tid");
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/Screentype/")
+        api.get("Screentype/")
             .then((res) => setScreenTypes(res.data.data))
             .catch((err) => console.error(err));
     }, []);
 
     const loadScreens = () => {
-        axios.get(`http://127.0.0.1:8000/Screenview/${theaterId}/`)
+        api.get(`Screenview/${theaterId}/`)
             .then((res) => setScreens(res.data.data))
             .catch((err) => console.error(err));
     };
@@ -36,7 +36,7 @@ const Screen = () => {
         formData.append("screen_seatno", seatNumber);
         formData.append("screen_name", screenName);
 
-        axios.post("http://127.0.0.1:8000/Screen/", formData)
+        api.post("Screen/", formData)
             .then(() => {
                 alert("Screen Added 🎉");
                 setScreenName("");
@@ -48,7 +48,7 @@ const Screen = () => {
     };
 
     const handleDelete = (id) => {
-        axios.get(`http://127.0.0.1:8000/DeleteScreen/${id}/`)
+        api.get(`DeleteScreen/${id}/`)
             .then(() => loadScreens())
             .catch((err) => console.error(err));
     };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./MyBooking.module.css";
 import { Link } from "react-router-dom";
 
@@ -28,7 +28,7 @@ const MyBookings = () => {
     useEffect(() => {
 
         const fetchBookings = () => {
-            axios.get(`http://127.0.0.1:8000/MyBookings/${userId}/`)
+            api.get(`MyBookings/${userId}/`)
                 .then(res => {
                     setBookings(res.data.data);
 
@@ -95,7 +95,7 @@ const MyBookings = () => {
             return;
         }
 
-        axios.post("http://127.0.0.1:8000/Review/", {
+        api.post("Review/", {
             user_id: userId,
             movie_id: movieId,
             review_rating: rating[movieId],
@@ -118,14 +118,14 @@ const MyBookings = () => {
 
         try {
 
-            await axios.post("http://127.0.0.1:8000/CancelBooking/", {
+            await api.post("CancelBooking/", {
                 booking_id: bookingId
             });
 
             alert("Booking cancelled successfully");
 
 
-            const updated = await axios.get(`http://127.0.0.1:8000/MyBookings/${userId}/`);
+            const updated = await api.get(`MyBookings/${userId}/`);
             setBookings(updated.data.data);
 
         } catch (err) {

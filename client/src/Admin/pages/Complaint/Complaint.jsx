@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./Complaint.module.css";
 
 const Complaints = () => {
@@ -8,7 +8,7 @@ const Complaints = () => {
     const [search, setSearch] = useState("");
 
     const loadComplaints = () => {
-        axios.get("http://127.0.0.1:8000/Complaint/")
+        api.get("Complaint/")
             .then(res => setComplaints(res.data.data))
             .catch(err => console.log(err));
     };

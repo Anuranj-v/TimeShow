@@ -1,6 +1,6 @@
 import styles from "./Registration.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api";
 import { useEffect, useRef, useState } from "react";
 
 const Registration = () => {
@@ -57,8 +57,8 @@ const Registration = () => {
 
     const timer = setTimeout(() => {
 
-      axios
-        .get(`http://127.0.0.1:8000/CitySearch/?q=${encodeURIComponent(cityText)}`)
+      api
+        .get(`CitySearch/?q=${encodeURIComponent(cityText)}`)
         .then((res) => {
           setCityList(res.data.data || []);
           setShowCityDrop(true);
@@ -123,8 +123,8 @@ const Registration = () => {
     Fdata.append("user_contact", userContact);
     Fdata.append("city_id", city_Id);
 
-    axios
-      .post("http://127.0.0.1:8000/User/", Fdata)
+    api
+      .post("User/", Fdata)
       .then(() => {
 
         setLoading(false);

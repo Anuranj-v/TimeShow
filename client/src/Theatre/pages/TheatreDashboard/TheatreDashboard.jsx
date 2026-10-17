@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TheatreDashboard.module.css";
-import axios from "axios";
+import api from "../../../api";
 
 const TheatreDashboard = () => {
 
@@ -11,7 +11,7 @@ const TheatreDashboard = () => {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/TheatreDashboard/")
+        api.get("TheatreDashboard/")
             .then((res) => {
                 const d = res.data;
                 setStats(d.stats ?? {});

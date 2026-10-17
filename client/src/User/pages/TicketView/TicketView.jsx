@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import styles from "./TicketView.module.css";
@@ -14,8 +14,8 @@ const TicketView = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios
-            .get(`${BASE_URL}/booking-details/${bookingId}/`)
+        api
+            .get(`booking-details/${bookingId}/`)
             .then((res) => {
                 console.log(res.data);
 

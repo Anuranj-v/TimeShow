@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./MoviePage.module.css";
 
@@ -12,8 +12,8 @@ const MoviePage = () => {
 
     useEffect(() => {
 
-        axios
-            .get(`http://127.0.0.1:8000/theatrebymovies/${theatreId}/`)
+        api
+            .get(`theatrebymovies/${theatreId}/`)
             .then((res) => {
                 console.log("API Response:", res.data);
 

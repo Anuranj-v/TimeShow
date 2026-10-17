@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ChangePassword.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import api from "../../../api";
 
 const ChangePassword = () => {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ const ChangePassword = () => {
         if (!validate()) return;
         setSaving(true);
         // Fixed: was using GET, should be POST
-        axios.post(`http://127.0.0.1:8000/changepassword/${theaterId}/`, {
+        api.post(`changepassword/${theaterId}/`, {
             old_password: oldPwd,
             new_password: newPwd,
         })

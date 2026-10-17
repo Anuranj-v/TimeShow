@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./DateTime.module.css";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api";
 
 const DateTime = () => {
 
@@ -18,7 +18,7 @@ const DateTime = () => {
 
     if (!movieId) return;
 
-    axios.get(`http://127.0.0.1:8000/UserShows/${movieId}/${theaterId}/`)
+    api.get(`UserShows/${movieId}/${theaterId}/`)
       .then((res) => {
 
         const showData = res.data.data;

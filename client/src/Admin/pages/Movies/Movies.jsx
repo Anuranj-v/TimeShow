@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Movies.module.css";
-import axios from "axios";
+import api from "../../../api";
 
 const Movies = () => {
 
@@ -18,7 +18,7 @@ const Movies = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleDelete = id =>
-        axios.delete(`http://127.0.0.1:8000/DeleteMovie/${id}/`)
+        api.delete(`DeleteMovie/${id}/`)
             .then(() => loadMovies())
             .catch(console.error);
 
@@ -36,7 +36,7 @@ const Movies = () => {
         Fdata.append("movie_trailer", movieTrailer);
         Fdata.append("movie_rating", movieRating);
 
-        axios.post("http://127.0.0.1:8000/Movie/", Fdata)
+        api.post("Movie/", Fdata)
             .then(response => {
                 console.log("Movie added:", response.data);
                 setIsModalOpen(false);
@@ -48,7 +48,7 @@ const Movies = () => {
     };
 
     const loadMovies = () => {
-        axios.get("http://127.0.0.1:8000/Movie/")
+        api.get("Movie/")
             .then(response => setMoviessDatas(response.data.data))
             .catch(error => console.error("Error loading movies:", error));
     };

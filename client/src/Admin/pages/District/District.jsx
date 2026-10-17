@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './District.module.css'
-import axios from 'axios';
+import api from "../../../api";
 
 const District = () => {
     const [district, setDistrict] = useState("");
@@ -9,19 +9,19 @@ const District = () => {
     const [editName, setEditName] = useState('');
 
     const handleDelete = id =>
-        axios.delete(`http://127.0.0.1:8000/DeleteDistrict/${id}/`)
+        api.delete(`DeleteDistrict/${id}/`)
             .then(res => setDistrictDatas(res.data.data))
             .catch(console.error);
 
     const handleSave = () => {
         if (editId) {
-            axios.put(`http://127.0.0.1:8000/EditDistrict/${editId}/`, { district_name: editName })
+            api.put(`EditDistrict/${editId}/`, { district_name: editName })
                 .then(res => { setDistrictDatas(res.data.data); cancelEdit(); })
                 .catch(console.error);
         } else {
             const Fdata = new FormData();
             Fdata.append("district_name", district);
-            axios.post("http://127.0.0.1:8000/District/", Fdata)
+            api.post("District/", Fdata)
                 .then(() => loadDistricts())
                 .catch(console.error);
         }
@@ -31,7 +31,7 @@ const District = () => {
     const cancelEdit = () => { setEditId(null); setEditName(''); };
 
     const loadDistricts = () => {
-        axios.get("http://127.0.0.1:8000/District/")
+        api.get("District/")
             .then(res => setDistrictDatas(res.data.data))
             .catch(console.error);
     };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ScreenType.module.css";
-import axios from "axios";
+import api from "../../../api";
 
 const ScreenType = () => {
     const [screenTypes, setScreenTypes] = useState("");
@@ -9,19 +9,19 @@ const ScreenType = () => {
     const [editName, setEditName] = useState('');
 
     const handleDelete = id =>
-        axios.delete(`http://127.0.0.1:8000/DeleteScreentype/${id}/`)
+        api.delete(`DeleteScreentype/${id}/`)
             .then(res => setScreenTypeDatas(res.data.data))
             .catch(console.error);
 
     const handleSave = () => {
         if (editId) {
-            axios.put(`http://127.0.0.1:8000/EditScreentype/${editId}/`, { screentype_name: editName })
+            api.put(`EditScreentype/${editId}/`, { screentype_name: editName })
                 .then(res => { setScreenTypeDatas(res.data.data); cancelEdit(); })
                 .catch(console.error);
         } else {
             const Fdata = new FormData();
             Fdata.append("screentype_name", screenTypes);
-            axios.post("http://127.0.0.1:8000/Screentype/", Fdata)
+            api.post("Screentype/", Fdata)
                 .then(() => loadScreenTypes())
                 .catch(console.error);
         }
@@ -31,7 +31,7 @@ const ScreenType = () => {
     const cancelEdit = () => { setEditId(null); setEditName(''); };
 
     const loadScreenTypes = () => {
-        axios.get("http://127.0.0.1:8000/Screentype/")
+        api.get("Screentype/")
             .then(res => setScreenTypeDatas(res.data.data))
             .catch(console.error);
     };

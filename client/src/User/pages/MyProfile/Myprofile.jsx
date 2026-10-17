@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./MyProfile.module.css";
-import axios from 'axios';
+import api from "../../../api";
 import { Link } from 'react-router';
 const MyProfile = () => {
     const userId = sessionStorage.getItem('uid');
     const [myprofileDatas, setMyprofileDatas] = useState('');
 
     const loadMyProfile = () => {
-        axios.get(`http://127.0.0.1:8000/UserProfile/${userId}/`)
+        api.get(`UserProfile/${userId}/`)
             .then((response) => {
                 // console.log("MyProfile loaded successfully:", response.data);
                 setMyprofileDatas(response.data);

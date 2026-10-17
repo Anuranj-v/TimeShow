@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './SeatType.module.css'
-import axios from 'axios';
+import api from "../../../api";
 
 const SeatType = () => {
     const [seattype, setSeatType] = useState("");
@@ -9,19 +9,19 @@ const SeatType = () => {
     const [editName, setEditName] = useState('');
 
     const handleDelete = id =>
-        axios.delete(`http://127.0.0.1:8000/DeleteSeatType/${id}/`)
+        api.delete(`DeleteSeatType/${id}/`)
             .then(res => setSeatTypeDatas(res.data.data))
             .catch(console.error);
 
     const handleSave = () => {
         if (editId) {
-            axios.put(`http://127.0.0.1:8000/EditSeatType/${editId}/`, { seattype_name: editName })
+            api.put(`EditSeatType/${editId}/`, { seattype_name: editName })
                 .then(res => { setSeatTypeDatas(res.data.data); cancelEdit(); })
                 .catch(console.error);
         } else {
             const Fdata = new FormData();
             Fdata.append("seattype_name", seattype);
-            axios.post("http://127.0.0.1:8000/SeatType/", Fdata)
+            api.post("SeatType/", Fdata)
                 .then(() => loadSeatTypes())
                 .catch(console.error);
         }
@@ -31,7 +31,7 @@ const SeatType = () => {
     const cancelEdit = () => { setEditId(null); setEditName(''); };
 
     const loadSeatTypes = () => {
-        axios.get("http://127.0.0.1:8000/SeatType/")
+        api.get("SeatType/")
             .then(res => setSeatTypeDatas(res.data.data))
             .catch(console.error);
     };

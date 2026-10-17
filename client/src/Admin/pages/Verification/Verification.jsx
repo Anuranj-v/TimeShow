@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./Verification.module.css";
 
 const Verification = () => {
@@ -7,7 +7,7 @@ const Verification = () => {
     const [theatres, setTheatres] = useState([]);
 
     const loadTheatres = () => {
-        axios.get("http://127.0.0.1:8000/PendingTheatres/")
+        api.get("PendingTheatres/")
             .then((res) => setTheatres(res.data.data))
             .catch((err) => console.error(err));
     };
@@ -15,12 +15,12 @@ const Verification = () => {
     useEffect(() => { loadTheatres(); }, []);
 
     const approveTheatre = (id) => {
-        axios.put(`http://127.0.0.1:8000/ApproveTheatre/${id}/`)
+        api.put(`ApproveTheatre/${id}/`)
             .then(() => { alert("Theatre Approved"); loadTheatres(); });
     };
 
     const rejectTheatre = (id) => {
-        axios.put(`http://127.0.0.1:8000/RejectTheatre/${id}/`)
+        api.put(`RejectTheatre/${id}/`)
             .then(() => { alert("Theatre Rejected"); loadTheatres(); });
     };
 

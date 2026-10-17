@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./AddShows.module.css";
-import axios from "axios";
+import api from "../../../api";
 
 const AddShows = () => {
 
@@ -14,14 +14,14 @@ const AddShows = () => {
 
     // 🔹 Load Movies
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/Movie/")
+        api.get("Movie/")
             .then(res => setMovies(res.data.data))
             .catch(err => console.error(err));
     }, []);
 
     // 🔹 Load Screens
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/Screenview/${theaterId}/`)
+        api.get(`Screenview/${theaterId}/`)
             .then((res) => {
 
                 setScreens(res.data.data);
@@ -59,7 +59,7 @@ const AddShows = () => {
         formData.append("showtime", time);
         formData.append("showdate", date);
 
-        axios.post("http://127.0.0.1:8000/Shows/", formData)
+        api.post("Shows/", formData)
             .then(res => {
                 alert(res.data.msg);
 

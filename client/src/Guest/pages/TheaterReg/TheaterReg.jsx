@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./TheaterReg.module.css";
-import axios from "axios";
+import api from "../../../api";
 import { useNavigate } from "react-router-dom";   
 
 const TheaterReg = () => {
@@ -85,7 +85,7 @@ const TheaterReg = () => {
         Fdata.append("theater_proof", theaterProof);
         Fdata.append("city_id", cityId);
 
-        axios.post("http://127.0.0.1:8000/Theater/", Fdata)
+        api.post("Theater/", Fdata)
             .then((response) => {
 
                 console.log("Theater saved successfully:", response.data);
@@ -116,7 +116,7 @@ const TheaterReg = () => {
     };
 
     const loadDistrict = () => {
-        axios.get("http://127.0.0.1:8000/District/")
+        api.get("District/")
             .then((response) => {
                 setDistrictDatas(response.data.data);
             })
@@ -126,7 +126,7 @@ const TheaterReg = () => {
     };
 
     const loadCity = (districtId) => {
-        axios.get(`http://127.0.0.1:8000/CityByDistrict/${districtId}/`)
+        api.get(`CityByDistrict/${districtId}/`)
             .then((response) => {
                 setCityDatas(response.data.data);
             })

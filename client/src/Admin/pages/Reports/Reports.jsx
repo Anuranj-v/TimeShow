@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./Reports.module.css";
 
 const AdminUsersTheatres = () => {
@@ -9,7 +9,7 @@ const AdminUsersTheatres = () => {
     const [theatres, setTheatres] = useState([]);
 
     const loadData = (from = "", to = "") => {
-        axios.get("http://127.0.0.1:8000/AdminUsersTheatres/", {
+        api.get("AdminUsersTheatres/", {
             params: { from, to }
         })
             .then(res => setTheatres(res.data.theatres))

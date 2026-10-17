@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api";
 import styles from "./UserDashboard.module.css";
 import { Link } from "react-router";
 
@@ -11,7 +11,7 @@ const HeroBanner = () => {
 
   // Fetch Movies
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/Movie/")
+    api.get("Movie/")
       .then(res => setMovies(res.data.data))
       .catch(err => console.error(err));
   }, []);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./EditProfile.module.css";
-import axios from 'axios';
+import api from "../../../api";
 import { Link } from "react-router";
 const EditProfile = () => {
     const userId = sessionStorage.getItem('uid');
@@ -13,7 +13,7 @@ const EditProfile = () => {
 
     const handleSave = () => {
 
-        axios.put(`http://127.0.0.1:8000/EditUserProfile/${userId}/`,
+        api.put(`EditUserProfile/${userId}/`,
             {
                 user_name: editName,
                 user_email: editEmail,
@@ -41,7 +41,7 @@ const EditProfile = () => {
     };
 
     const loadEditProfile = () => {
-        axios.get(`http://127.0.0.1:8000/UserProfile/${userId}/`)
+        api.get(`UserProfile/${userId}/`)
             .then((res) => {
                 console.log("MyProfile loaded successfully:", res.data);
                 setEditEmail(res.data.user_email)

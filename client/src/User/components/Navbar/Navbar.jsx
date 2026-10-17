@@ -4,7 +4,7 @@ import logo from "../../../assets/Logo/Logo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import profile from "../../../assets/Profile/Profile.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api";
 
 const Navbar = () => {
 
@@ -30,7 +30,7 @@ const Navbar = () => {
             return;
         }
 
-        axios.get(`http://127.0.0.1:8000/search/${search}/`)
+        api.get(`search/${search}/`)
             .then((res) => {
                 if (res.data.status) {
                     setResults(res.data.data);

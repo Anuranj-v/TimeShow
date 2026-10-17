@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Genres.module.css'
-import axios from 'axios';
+import api from "../../../api";
 
 const Genres = () => {
     const [genres, setGenres] = useState("");
@@ -9,19 +9,19 @@ const Genres = () => {
     const [editName, setEditName] = useState('');
 
     const handleDelete = id =>
-        axios.delete(`http://127.0.0.1:8000/DeleteGenre/${id}/`)
+        api.delete(`DeleteGenre/${id}/`)
             .then(res => setGenresDatas(res.data.data))
             .catch(console.error);
 
     const handleSave = () => {
         if (editId) {
-            axios.put(`http://127.0.0.1:8000/EditGenre/${editId}/`, { genre_name: editName })
+            api.put(`EditGenre/${editId}/`, { genre_name: editName })
                 .then(res => { setGenresDatas(res.data.data); cancelEdit(); })
                 .catch(console.error);
         } else {
             const Fdata = new FormData();
             Fdata.append("genre_name", genres);
-            axios.post("http://127.0.0.1:8000/Genre/", Fdata)
+            api.post("Genre/", Fdata)
                 .then(() => loadGenres())
                 .catch(console.error);
         }
@@ -31,7 +31,7 @@ const Genres = () => {
     const cancelEdit = () => { setEditId(null); setEditName(''); };
 
     const loadGenres = () => {
-        axios.get("http://127.0.0.1:8000/Genre/")
+        api.get("Genre/")
             .then(res => setGenresDatas(res.data.data))
             .catch(console.error);
     };

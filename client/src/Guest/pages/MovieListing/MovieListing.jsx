@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import styles from "./MovieListing.module.css";
 import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router";
-import axios from "axios";
+import api from "../../../api";
 
 
 
@@ -19,7 +19,7 @@ const MovieListing = () => {
             : movielistingDatas.filter((m) => m.movie_genre === genre);
 
     const loadmovielisting = () => {
-        axios.get(`http://127.0.0.1:8000/Movie/`)
+        api.get(`Movie/`)
             .then((response) => {
                 console.log(response.data.data);
 

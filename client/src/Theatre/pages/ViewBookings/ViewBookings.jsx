@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ViewBookings.module.css";
-import axios from "axios";
+import api from "../../../api";
 
 const ViewBookings = () => {
 
@@ -9,7 +9,7 @@ const ViewBookings = () => {
     const [filter, setFilter] = useState("All");
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/BookingList/")
+        api.get("BookingList/")
             .then((res) => setBookings(res.data.data))
             .catch((err) => console.log(err));
     }, []);

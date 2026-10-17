@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import api from "../../../api";
 
 const Login = () => {
 
@@ -23,7 +23,7 @@ const Login = () => {
 
         setLoading(true);
 
-        axios.post('http://127.0.0.1:8000/Login/', { email, password })
+        api.post('Login/', { email, password })
             .then(res => {
                 const { role, id, name, message } = res.data;
 
