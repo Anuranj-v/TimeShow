@@ -11,7 +11,7 @@ body,
 .userLayout {
   position: relative;
   min-height: 100vh;
-  background-image: url("src/assets/Banner/backgroundImage.png");
+  background: #0a0a19;
   display: flex;
   flex-direction: column;
  
