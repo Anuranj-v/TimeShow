@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styles from "./ComingSoon.module.css";
+import styles from "./Comingsoon.module.css";
 
 const ComingSoon = () => {
 
