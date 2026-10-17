@@ -84,6 +84,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 10px 15px;
 }
 
 .seatContainer h3 {
@@ -107,7 +112,7 @@
 
 .seats {
     display: flex;
-    gap: 222px;
+    gap: 12px;
 }
 .seat {
     width: 36px;
@@ -220,11 +225,64 @@
 }
 
 @media (max-width: 768px) {
-    .footer {
-        padding: 20px;
+    .container {
+        padding: 16px 10px 110px;
+        margin-top: 70px;
+    }
+
+    .header {
+        margin-bottom: 24px;
+        gap: 14px;
+    }
+
+    .row {
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+
+    .rowLabel {
+        width: 18px;
+        font-size: 13px;
+    }
+
+    .seat {
+        width: 30px;
+        height: 30px;
+        font-size: 10.5px;
+        border-radius: 6px;
     }
 
     .gap {
-        margin-right: 10px;
+        margin-right: 14px;
+    }
+
+    .bigGap {
+        margin-right: 28px;
+    }
+
+    .legend {
+        padding: 10px 16px;
+        gap: 12px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .legendItem {
+        font-size: 12px;
+    }
+
+    .footer {
+        padding: 12px 16px;
+    }
+
+    .summary h3 {
+        font-size: 18px;
+    }
+
+    .bookBtn {
+        padding: 10px 24px;
+        font-size: 14px;
+        min-height: 44px;
     }
 }

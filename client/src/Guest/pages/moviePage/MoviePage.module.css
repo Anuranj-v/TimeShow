@@ -63,3 +63,43 @@
 .bookBtn:hover {
   background: #c40812;
 }
+
+@media (max-width: 768px) {
+  .page {
+    padding: 85px 16px 40px;
+  }
+
+  .heading {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .poster {
+    height: 210px;
+  }
+
+  .info {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .bookBtn {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

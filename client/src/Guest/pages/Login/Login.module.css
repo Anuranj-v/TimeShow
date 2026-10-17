@@ -16,7 +16,9 @@
 
 /* ===== Card ===== */
 .signinCard {
-  width: 380px;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
   background: #ffffff;
   border-radius: 16px;
   padding: 28px;
@@ -225,4 +227,19 @@
   50% { transform: translateX(6px); }
   75% { transform: translateX(-6px); }
   100% { transform: translateX(0); }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 85px 16px 40px;
+    box-sizing: border-box;
+  }
+
+  .signinCard {
+    padding: 24px 18px;
+  }
+
+  .googleBtn, .continueBtn {
+    min-height: 44px;
+  }
 }

@@ -174,3 +174,41 @@
   font-size: 18px;
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  .paymentPage {
+    padding: 85px 14px 40px;
+    background-attachment: scroll;
+  }
+
+  .paymentCard {
+    padding: 22px 14px;
+    border-radius: 20px;
+  }
+
+  .paymentTitle {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .innerCard {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+
+  .summaryGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .formRow {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .paymentBtn {
+    min-height: 48px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+}

@@ -75,3 +75,35 @@
   font-size: 14px;
   color: #cfcfcf;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 16px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .left {
+    max-width: 100%;
+  }
+
+  .logoImg {
+    width: 170px;
+  }
+
+  .stores {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .stores img {
+    height: 40px;
+  }
+
+  .column {
+    gap: 10px;
+  }
+}

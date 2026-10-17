@@ -95,3 +95,33 @@
   background: #ff2f55;
   transform: translateY(-2px);
 }
+
+@media (max-width: 768px) {
+  .page {
+    padding: 85px 16px 40px;
+  }
+
+  .card {
+    padding: 24px 16px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .cancel,
+  .save,
+  .Btn {
+    width: 100%;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}

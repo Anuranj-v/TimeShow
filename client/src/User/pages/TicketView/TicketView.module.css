@@ -367,3 +367,44 @@
     background: rgba(255,255,255,0.09);
     color: #fff;
 }
+
+@media (max-width: 768px) {
+    .page {
+        padding: 85px 14px 40px;
+    }
+
+    .ticketCard {
+        max-width: 100%;
+        border-radius: 16px;
+    }
+
+    .actions {
+        max-width: 100%;
+    }
+
+    .downloadBtn,
+    .shareBtn {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .infoCell {
+        padding: 0 4px;
+    }
+
+    .infoVal {
+        font-size: 12px;
+    }
+
+    .stubBody {
+        gap: 12px;
+        padding: 14px 12px 0;
+    }
+
+    .qrImg {
+        width: 80px;
+        height: 80px;
+    }
+}

@@ -85,3 +85,34 @@
 .button:hover {
   opacity: 0.9;
 }
+
+@media (max-width: 768px) {
+  .page {
+    padding: 85px 16px 40px;
+    box-sizing: border-box;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .container {
+    gap: 20px;
+  }
+
+  .infoCard,
+  .formCard {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 16px;
+    box-sizing: border-box;
+  }
+
+  .button {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

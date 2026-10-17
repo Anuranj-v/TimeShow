@@ -78,3 +78,35 @@
   background: #000000;
   color: #ffffff;
 }
+
+@media (max-width: 768px) {
+  .page {
+    padding: 85px 16px 40px;
+  }
+  .heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+  }
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+  }
+  .left {
+    max-width: 100%;
+    width: 100%;
+  }
+  .shows {
+    width: 100%;
+    gap: 10px;
+  }
+  .timeBtn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+}

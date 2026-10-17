@@ -10,7 +10,9 @@
 
 /* ===== Card ===== */
 .card {
-  width: 420px;
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
   background: #111;
   border-radius: 20px;
   padding: 32px;
@@ -218,4 +220,19 @@ select:focus {
   50% { transform: translateX(6px); }
   75% { transform: translateX(-6px); }
   100% { transform: translateX(0); }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 85px 16px 40px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    padding: 24px 16px;
+  }
+
+  .continueBtn {
+    min-height: 44px;
+  }
 }

@@ -120,3 +120,51 @@
     color:white;
     box-shadow:0 0 15px rgba(220,25,25,0.5);
 }
+
+@media (max-width: 768px) {
+    .container {
+        padding: 85px 16px 40px;
+    }
+
+    .movieTitle {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .dateBar {
+        overflow-x: auto;
+        padding-bottom: 10px;
+        gap: 10px;
+        margin-bottom: 24px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .dateCard {
+        padding: 8px 14px;
+        flex-shrink: 0;
+        min-width: 60px;
+    }
+
+    .theatreCard {
+        padding: 16px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .theatreName {
+        font-size: 18px;
+    }
+
+    .timeGrid {
+        gap: 10px;
+    }
+
+    .timeBtn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
