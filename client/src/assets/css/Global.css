@@ -11,7 +11,14 @@ html,
 body {
   width: 100%;
   max-width: 100vw;
+  min-height: 100vh;
   overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
 }
 
 img,
@@ -25,7 +32,7 @@ iframe {
    ========================= */
 :root {
   /* Backgrounds */
-  --bg-color: #0b0b0f;
+  --bg-color: #07070a;
   --bg-secondary: #111118;
   --card-bg: #15151f;
 
@@ -80,7 +87,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: Inter, system-ui, sans-serif;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
